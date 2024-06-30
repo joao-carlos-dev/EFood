@@ -18,4 +18,10 @@ export const EstiloGlobal = createGlobalStyle`
     background-color: ${cores.branco};
     color: ${cores.laranja};
   }
+
+  .container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `
