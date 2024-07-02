@@ -1,24 +1,29 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
 
-export const Cabecalho = styled.div`
-  widht: 100%;
-  height: 380px;
+export const HeaderBar = styled.header`
+  height: 186px;
+  padding: 83px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-bottom: 80px;
+  justify-content: space-between;
+
+  a {
+    color: ${cores.laranja};
+    text-decoration: none;
+    font-weight: 900;
+  }
 `
 
-export const Logo = styled.img`
-  width: 125px;
-  margin-top: 40px;
+export const Links = styled.ul`
+  display: flex;
 `
 
-export const Titulo = styled.h1`
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 42.19px;
-  width: 900px;
-  margin-top: 140px;
-  text-align: center;
+export const LinkCarrinho = styled.a`
+  display: flex;
+
+  img {
+    margin-left: 16px;
+    height: 20px;
+  }
 `
