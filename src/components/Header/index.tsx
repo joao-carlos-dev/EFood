@@ -1,7 +1,7 @@
-import planoFundo from '../../assets/images/plano_fundo_header.png'
 import { HeaderBar, LinkCarrinho, Links } from './styles'
 import logo from '../../assets/images/logo.png'
 import carrinho from '../../assets/images/carrinho.png'
+import planoFundo from '../../assets/images/plano_fundo_header.png'
 
 const Header = () => (
   <HeaderBar style={{ backgroundImage: `url(${planoFundo})` }}>
