@@ -7,5 +7,5 @@ export const TagContainer = styled.div`
   font-size: 12px;
   font-weight: 700;
   padding: 6px 4px;
-  dispaly: inline-block;
+  display: inline-block;
 `
