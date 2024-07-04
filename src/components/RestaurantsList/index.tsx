@@ -5,8 +5,47 @@ const RestaurantsList = () => (
   <Container>
     <div className="container">
       <List>
-        <Restaurants />
-        <Restaurants />
+        <Restaurants
+          titulo="Hioki Sushi "
+          descricao="teste"
+          image="//placehold.it/472x217"
+          infos={['Destaque da semana', 'Italiana']}
+        />
+
+        <Restaurants
+          titulo="Hioki Sushi "
+          descricao="teste"
+          image="//placehold.it/472x217"
+          infos={['Destaque da semana', 'Italiana']}
+        />
+
+        <Restaurants
+          titulo="Hioki Sushi "
+          descricao="teste"
+          image="//placehold.it/472x217"
+          infos={['Destaque da semana', 'Italiana']}
+        />
+
+        <Restaurants
+          titulo="Hioki Sushi "
+          descricao="teste"
+          image="//placehold.it/472x217"
+          infos={['Destaque da semana', 'Italiana']}
+        />
+
+        <Restaurants
+          titulo="Hioki Sushi "
+          descricao="teste"
+          image="//placehold.it/472x217"
+          infos={['Destaque da semana', 'Italiana']}
+        />
+
+        <Restaurants
+          titulo="Hioki Sushi "
+          descricao="teste"
+          image="//placehold.it/472x217"
+          infos={['Destaque da semana', 'Italiana']}
+        />
       </List>
     </div>
   </Container>

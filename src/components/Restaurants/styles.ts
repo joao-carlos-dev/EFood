@@ -5,19 +5,11 @@ import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
   background-color: ${cores.branco};
+  position: relative;
+  margin-bottom: 48px;
 
   img {
     margin-bottom: -10px;
-  }
-
-  div {
-    border: 0px, 1px, 1px, 1px;
-    border-style: solid;
-    border-color: ${cores.laranja};
-  }
-
-  ${TagContainer} {
-    margin-right: 8px;
   }
 
   ${ButtonContainer} {
@@ -42,3 +34,17 @@ export const Descricao = styled.p`
   margin-bottom: 16px;
   padding: 8px;
 `
+export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  ${TagContainer} {
+    margin-right: 8px;
+  }
+`
+// div {
+//   border: 0px, 1px, 1px, 1px;
+//   border-style: solid;
+//   border-color: ${cores.laranja};
+// }

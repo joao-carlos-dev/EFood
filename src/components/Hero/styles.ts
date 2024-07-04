@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Cabecalho = styled.div`
   widht: 100%;
-  height: 380px;
+  height: 384px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,9 +16,9 @@ export const Logo = styled.img`
 
 export const Titulo = styled.h1`
   font-size: 36px;
-  font-weight: bold;
-  line-height: 42.19px;
-  width: 900px;
-  margin-top: 140px;
+  font-weight: 900;
+  width: 539px;
+  height: 84px;
+  margin-top: 136px;
   text-align: center;
 `

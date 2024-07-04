@@ -9,6 +9,7 @@ export const ButtonContainer = styled.button`
   font-size: 14px;
   font-weight: 700;
   padding: 4px 6px;
+  border: none;
 `
 // align-items: flex-end;
 
