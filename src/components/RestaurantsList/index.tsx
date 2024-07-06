@@ -1,51 +1,24 @@
+import Rest from '../../models/Rest'
 import Restaurants from '../Restaurants'
 import { Container, List } from './styles'
 
-const RestaurantsList = () => (
+export type Props = {
+  rests: Rest[]
+}
+
+const RestaurantsList = ({ rests }: Props) => (
   <Container>
     <div className="container">
       <List>
-        <Restaurants
-          titulo="Hioki Sushi "
-          descricao="teste"
-          image="//placehold.it/472x217"
-          infos={['Destaque da semana', 'Italiana']}
-        />
-
-        <Restaurants
-          titulo="Hioki Sushi "
-          descricao="teste"
-          image="//placehold.it/472x217"
-          infos={['Destaque da semana', 'Italiana']}
-        />
-
-        <Restaurants
-          titulo="Hioki Sushi "
-          descricao="teste"
-          image="//placehold.it/472x217"
-          infos={['Destaque da semana', 'Italiana']}
-        />
-
-        <Restaurants
-          titulo="Hioki Sushi "
-          descricao="teste"
-          image="//placehold.it/472x217"
-          infos={['Destaque da semana', 'Italiana']}
-        />
-
-        <Restaurants
-          titulo="Hioki Sushi "
-          descricao="teste"
-          image="//placehold.it/472x217"
-          infos={['Destaque da semana', 'Italiana']}
-        />
-
-        <Restaurants
-          titulo="Hioki Sushi "
-          descricao="teste"
-          image="//placehold.it/472x217"
-          infos={['Destaque da semana', 'Italiana']}
-        />
+        {rests.map((rest) => (
+          <Restaurants
+            key={rest.id}
+            titulo={rest.titulo}
+            descricao={rest.descricao}
+            image={rest.image}
+            infos={rest.infos}
+          />
+        ))}
       </List>
     </div>
   </Container>
