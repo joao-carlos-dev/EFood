@@ -4,12 +4,12 @@ import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.branco};
+  background-color: ${cores.branco}
   position: relative;
   margin-bottom: 48px;
 
   img {
-    margin-bottom: -10px;
+    margin-bottom: -4px;
   }
 
   ${ButtonContainer} {
@@ -27,12 +27,24 @@ export const Border = styled.div`
 export const Titulo = styled.h3`
   font-size: 18px;
   font-weight: 700;
-  display: block;
   margin-top: 8px;
   margin-bottom: 16px;
   margin-left: 8px;
+  display: flex;
+  justify-content: space-between;
+`
+export const Nota = styled.div`
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
+export const Avaliacao = styled.h4`
+  margin-right: 8px;
+  font-size: 18px;
+  font-weight: 700;
+`
 export const Descricao = styled.p`
   font-size: 14px;
   line-height: 22px;

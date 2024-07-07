@@ -16,6 +16,7 @@ const RestaurantsList = ({ rests }: Props) => (
             titulo={rest.titulo}
             descricao={rest.descricao}
             image={rest.image}
+            avaliacao={rest.avaliacao}
             infos={rest.infos}
           />
         ))}

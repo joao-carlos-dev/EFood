@@ -1,16 +1,26 @@
 import { Link } from 'react-router-dom'
 import { ButtonContainer } from '../Button/styles'
 import Tag from '../Tag'
-import { Border, Card, Descricao, Infos, Titulo } from './styles'
+import {
+  Avaliacao,
+  Border,
+  Card,
+  Descricao,
+  Infos,
+  Nota,
+  Titulo
+} from './styles'
+import estrela from '../../assets/images/estrela.png'
 
 type Props = {
   titulo: string
   descricao: string
   infos: string[]
   image: string
+  avaliacao: number
 }
 
-const Restaurants = ({ titulo, descricao, infos, image }: Props) => (
+const Restaurants = ({ titulo, descricao, infos, image, avaliacao }: Props) => (
   <Card>
     <img src={image} alt={titulo} />
     <Infos>
@@ -19,10 +29,16 @@ const Restaurants = ({ titulo, descricao, infos, image }: Props) => (
       ))}
     </Infos>
     <Border>
-      <Titulo>{titulo}</Titulo>
+      <Titulo>
+        {titulo}
+        <Nota>
+          <Avaliacao>{avaliacao}</Avaliacao>
+          <img src={estrela} alt="estrela" />
+        </Nota>
+      </Titulo>
       <Descricao>{descricao}</Descricao>
       <ButtonContainer>
-        <Link to="/perfil">Saiba maisl</Link>
+        <Link to="/perfil">Saiba mais</Link>
       </ButtonContainer>
     </Border>
   </Card>
