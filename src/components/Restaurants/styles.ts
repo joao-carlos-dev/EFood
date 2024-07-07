@@ -18,6 +18,12 @@ export const Card = styled.div`
   }
 `
 
+export const Border = styled.div`
+  border: 1px;
+  border-style: solid;
+  border-color: ${cores.laranja};
+`
+
 export const Titulo = styled.h3`
   font-size: 18px;
   font-weight: 700;
@@ -43,8 +49,3 @@ export const Infos = styled.div`
     margin-right: 8px;
   }
 `
-// div {
-//   border: 0px, 1px, 1px, 1px;
-//   border-style: solid;
-//   border-color: ${cores.laranja};
-// }

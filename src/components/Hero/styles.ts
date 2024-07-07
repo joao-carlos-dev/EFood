@@ -6,7 +6,6 @@ export const Cabecalho = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 80px;
 `
 
 export const Logo = styled.img`

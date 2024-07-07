@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ButtonContainer } from '../Button/styles'
 import Tag from '../Tag'
-import { Card, Descricao, Infos, Titulo } from './styles'
+import { Border, Card, Descricao, Infos, Titulo } from './styles'
 
 type Props = {
   titulo: string
@@ -18,11 +18,13 @@ const Restaurants = ({ titulo, descricao, infos, image }: Props) => (
         <Tag key={info}>{info}</Tag>
       ))}
     </Infos>
-    <Titulo>{titulo}</Titulo>
-    <Descricao>{descricao}</Descricao>
-    <ButtonContainer>
-      <Link to="/perfil">saiba maisl</Link>
-    </ButtonContainer>
+    <Border>
+      <Titulo>{titulo}</Titulo>
+      <Descricao>{descricao}</Descricao>
+      <ButtonContainer>
+        <Link to="/perfil">Saiba maisl</Link>
+      </ButtonContainer>
+    </Border>
   </Card>
 )
 

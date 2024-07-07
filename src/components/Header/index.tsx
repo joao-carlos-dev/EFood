@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { HeaderBar, LinkCarrinho, Links } from './styles'
 import logo from '../../assets/images/logo.png'
 import carrinho from '../../assets/images/carrinho.png'
@@ -12,7 +13,9 @@ const Header = () => (
         </li>
       </Links>
     </nav>
-    <img src={logo} alt="EFOOD" />
+    <Link to="/">
+      <img src={logo} alt="EFOOD" />
+    </Link>
     <LinkCarrinho href="#">
       0 - produto(s)
       <img src={carrinho} alt="carrinho" />
