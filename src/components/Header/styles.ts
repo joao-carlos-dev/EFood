@@ -3,10 +3,12 @@ import { cores } from '../../styles'
 
 export const HeaderBar = styled.header`
   height: 186px;
-  padding: 83px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
 
   a {
     color: ${cores.laranja};
@@ -23,7 +25,6 @@ export const LinkCarrinho = styled.a`
   display: flex;
 
   img {
-    margin-left: 16px;
     height: 20px;
   }
 `

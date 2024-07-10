@@ -4,7 +4,7 @@ import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.branco}
+  background-color: ${cores.branco};
   position: relative;
   margin-bottom: 48px;
 
