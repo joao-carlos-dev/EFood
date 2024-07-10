@@ -14,10 +14,15 @@ export const Card = styled.div`
   }
 
   ${ButtonContainer} {
-    margin-bottom: 8px;
-    margin-left: 8px;
-    margin-right: 8px;
+    margin: 8px;
     background-color: ${cores.laranjaClaro};
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    a {
+      color: ${cores.laranja};
+    }
   }
 `
 

@@ -15,6 +15,10 @@ export const Card = styled.div`
   ${ButtonContainer} {
     margin-bottom: 8px;
     margin-left: 8px;
+
+    a {
+      color: ${cores.branco};
+    }
   }
 `
 
