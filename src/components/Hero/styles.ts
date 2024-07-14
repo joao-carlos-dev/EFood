@@ -16,8 +16,8 @@ export const Logo = styled.img`
 export const Titulo = styled.h1`
   font-size: 36px;
   font-weight: 900;
+  line-height: 42px;
   width: 539px;
-  height: 84px;
   margin-top: 136px;
   text-align: center;
 `

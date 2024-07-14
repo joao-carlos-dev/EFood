@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo.png'
 const Hero = () => (
   <Cabecalho style={{ backgroundImage: `url(${planoFundo})` }}>
     <Logo src={logo} alt="EFOOD" />
-    <Titulo>Viva experiências gastronômicasno conforto da sua casa</Titulo>
+    <Titulo>Viva experiências gastronômicas no conforto da sua casa</Titulo>
   </Cabecalho>
 )
 

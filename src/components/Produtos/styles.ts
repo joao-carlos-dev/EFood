@@ -16,7 +16,7 @@ export const Card = styled.div`
   ${ButtonContainer} {
     margin: 8px;
     background-color: ${cores.laranjaClaro};
-    width: 100%;
+    width: 95%;
     box-sizing: border-box;
     cursor: pointer;
 
