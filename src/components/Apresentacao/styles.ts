@@ -6,10 +6,13 @@ export const Imagem = styled.div`
   height: 280px;
   display: block;
   font-size: 32px;
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 
 export const Titulo = styled.h2`
   font-weight: 900;
+  font-size: 32px;
   color: ${cores.branco};
 `
 
