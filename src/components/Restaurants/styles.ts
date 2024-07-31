@@ -10,6 +10,10 @@ export const Card = styled.div`
 
   img {
     margin-bottom: -4px;
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
   }
 
   ${ButtonContainer} {
@@ -42,6 +46,10 @@ export const Nota = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  img {
+    height: 21px;
+  }
 `
 
 export const Avaliacao = styled.h4`
