@@ -1,7 +1,5 @@
 import Hero from '../../components/Hero'
 import RestaurantsList from '../../components/RestaurantsList'
-import japonesa from '../../assets/images/rest.japones.png'
-import italiana from '../../assets/images/rest.italiano.png'
 // import Rest from '../../components/Models/Rest'
 import { useEffect, useState } from 'react'
 

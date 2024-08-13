@@ -11,8 +11,9 @@ import {
   Titulo
 } from './styles'
 import estrela from '../../assets/images/estrela.png'
+import { Rest } from '../../pages/Home'
 
-type Props = {
+export type Props = {
   titulo: string
   descricao: string
   infos: string[]
@@ -31,7 +32,7 @@ const Restaurants = ({ titulo, descricao, infos, image, avaliacao }: Props) => {
 
   return (
     <Card>
-      <img src={image} alt={titulo} />
+      <img src={image} alt="Imagem do restaurante" />
       <Infos>
         {infos.map((info) => (
           <Tag key={info}>{info}</Tag>
@@ -47,7 +48,7 @@ const Restaurants = ({ titulo, descricao, infos, image, avaliacao }: Props) => {
         </Titulo>
         <Descricao>{getDescricao(descricao)}</Descricao>
         <ButtonContainer>
-          <Link to="/perfil">Saiba mais</Link>
+          <Link to={`/perfil/`}>Saiba mais</Link>
         </ButtonContainer>
       </Border>
     </Card>

@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ButtonContainer } from '../Button/styles'
 import { Card, Descricao, Titulo } from './styles'
-// import { useEffect, useState } from 'react'
-// import { Rest } from '../../pages/Home'
 
 export type Props = {
   titulo: string
@@ -10,12 +8,26 @@ export type Props = {
   image: string
 }
 
+// export const formataPreco = (preco: number) => {
+//   return new Intl.NumberFormat('pt-BR', {
+//     style: 'currency',
+//     currency: 'BRL'
+//   }).format(preco)
+// }
+
 const Produtos = ({ titulo, descricao, image }: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 250) {
+      return descricao.slice(0, 250) + '...'
+    }
+    return descricao
+  }
+
   return (
     <Card>
-      <img src={image} alt={titulo} />
+      <img src={image} alt="Foto restaurante" />
       <Titulo>{titulo}</Titulo>
-      <Descricao>{descricao}</Descricao>
+      <Descricao>{getDescricao(descricao)}</Descricao>
       <ButtonContainer>
         <Link to="#">Adiconar ao carinho</Link>
       </ButtonContainer>
