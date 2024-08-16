@@ -14,17 +14,24 @@ export type Props = {
 
 const Perfil = () => {
   const { id } = useParams()
-  const [produto, setProduto] = useState<Rest[]>([])
+  const [produto, setProduto] = useState<Rest | undefined>()
+  const [banner, setBanner] = useState<Rest | undefined>()
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
       .then((res) => setProduto(res))
   }, [id])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setBanner(res))
+  }, [id])
   return (
     <>
       <Header />
-      <Apresentacao />
+      <Apresentacao rests={banner} />
       <ProdutoList rests={produto} />
     </>
   )

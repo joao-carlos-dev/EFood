@@ -9,6 +9,7 @@ export const Card = styled.div`
 
   img {
     width: 304px;
+    height: 167px;
     width: 100%;
     padding: 8px;
   }

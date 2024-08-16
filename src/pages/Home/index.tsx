@@ -67,14 +67,14 @@ export type Rest = {
   avaliacao: string
   descricao: string
   capa: string
-  cardapio?: {
+  cardapio: {
     foto: string
     preco: string
     id: string
     nome: string
     descricao: string
     porcao: string
-  }
+  }[]
 }
 const Home = () => {
   const [restaurantes, setRestaurantes] = useState<Rest[]>([])

@@ -14,6 +14,7 @@ import estrela from '../../assets/images/estrela.png'
 import { Rest } from '../../pages/Home'
 
 export type Props = {
+  id: number
   titulo: string
   descricao: string
   infos: string[]
@@ -22,7 +23,14 @@ export type Props = {
   tipo?: string
 }
 
-const Restaurants = ({ titulo, descricao, infos, image, avaliacao }: Props) => {
+const Restaurants = ({
+  id,
+  titulo,
+  descricao,
+  infos,
+  image,
+  avaliacao
+}: Props) => {
   const getDescricao = (descricao: string) => {
     if (descricao.length > 250) {
       return descricao.slice(0, 250) + '...'
@@ -48,7 +56,7 @@ const Restaurants = ({ titulo, descricao, infos, image, avaliacao }: Props) => {
         </Titulo>
         <Descricao>{getDescricao(descricao)}</Descricao>
         <ButtonContainer>
-          <Link to={`/perfil/`}>Saiba mais</Link>
+          <Link to={`/perfil/${id}`}>Saiba mais</Link>
         </ButtonContainer>
       </Border>
     </Card>

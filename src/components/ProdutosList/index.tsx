@@ -7,22 +7,22 @@ import { Container, List } from './styles'
 // import { useEffect, useState } from 'react'
 
 export type Props = {
-  rests: Rest[]
+  rests: Rest | undefined
 }
-
 const ProdutoList = ({ rests }: Props) => {
   return (
     <Container>
       <div className="container">
         <List>
-          {rests.map((rests) => (
-            <Produtos
-              key={rests.id}
-              titulo={rests.titulo}
-              descricao={rests.descricao}
-              image={rests.capa}
-            />
-          ))}
+          {rests &&
+            rests.cardapio.map((rests) => (
+              <Produtos
+                key={rests.id}
+                titulo={rests.nome}
+                descricao={rests.descricao}
+                image={rests.foto}
+              />
+            ))}
         </List>
       </div>
     </Container>
