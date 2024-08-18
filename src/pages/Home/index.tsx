@@ -69,7 +69,7 @@ export type Rest = {
   capa: string
   cardapio: {
     foto: string
-    preco: string
+    preco: number
     id: string
     nome: string
     descricao: string

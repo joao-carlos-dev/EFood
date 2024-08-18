@@ -1,10 +1,7 @@
-// import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { Rest } from '../../pages/Home'
-// import Prod from '../Models/Prod'
+
 import Produtos from '../Produtos'
 import { Container, List } from './styles'
-// import { useEffect, useState } from 'react'
 
 export type Props = {
   rests: Rest | undefined
@@ -21,6 +18,8 @@ const ProdutoList = ({ rests }: Props) => {
                 titulo={rests.nome}
                 descricao={rests.descricao}
                 image={rests.foto}
+                porcao={rests.porcao}
+                preco={rests.preco}
               />
             ))}
         </List>
