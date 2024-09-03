@@ -1,4 +1,3 @@
-// import Rest from '../Models/Rest'
 import { Rest } from '../../pages/Home'
 import Restaurants from '../Restaurants'
 import { Container, List } from './styles'

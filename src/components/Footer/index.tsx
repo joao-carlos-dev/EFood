@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.png'
 import insta from '../../assets/images/insta-logo.png'
 import face from '../../assets/images/face-logo .png'
@@ -5,32 +6,33 @@ import twitter from '../../assets/images/twitter-logo.png'
 import {
   Container,
   FooterSection,
-  Link,
   Links,
-  LogoFooter,
+  LinkSocial,
   TextoFooter
 } from './styles'
 
 const Footer = () => (
   <Container>
     <div className="container">
-      <LogoFooter src={logo} alt="EFOOD" />
+      <Link to="/">
+        <img src={logo} alt="EFOOD" />
+      </Link>
       <FooterSection>
         <Links>
           <li>
-            <Link>
+            <LinkSocial>
               <img src={insta} alt="instagran" />
-            </Link>
+            </LinkSocial>
           </li>
           <li>
-            <Link>
+            <LinkSocial>
               <img src={face} alt="facebook" />
-            </Link>
+            </LinkSocial>
           </li>
           <li>
-            <Link>
+            <LinkSocial>
               <img src={twitter} alt="twitter" />
-            </Link>
+            </LinkSocial>
           </li>
         </Links>
       </FooterSection>

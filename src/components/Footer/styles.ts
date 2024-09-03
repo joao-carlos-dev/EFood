@@ -18,13 +18,13 @@ export const Links = styled.ul`
   justify-content: center;
 `
 
-export const Link = styled.a`
+export const LinkSocial = styled.a`
   text-decoration: none;
   margin-right: 8px;
 `
 
 export const FooterSection = styled.div`
-  margin-bottom: 32px;
+  margin-top: 32px;
 `
 
 export const TextoFooter = styled.p`
