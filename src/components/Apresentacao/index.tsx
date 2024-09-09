@@ -1,5 +1,4 @@
 import { Imagem, TipoComida, Titulo } from './styles'
-import bannerImg from '../../assets/images/imagem_apre_rest.png'
 import { Rest } from '../../pages/Home'
 
 export type Props = {

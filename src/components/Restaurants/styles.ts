@@ -36,7 +36,6 @@ export const Titulo = styled.h3`
   font-size: 18px;
   font-weight: 700;
   margin-top: 8px;
-  margin-bottom: 16px;
   margin-left: 8px;
   display: flex;
   justify-content: space-between;
@@ -44,11 +43,11 @@ export const Titulo = styled.h3`
 export const Nota = styled.div`
   margin-right: 8px;
   display: flex;
-  align-items: center;
-  justify-content: center;
 
   img {
     height: 21px;
+    align-items: center;
+    justify-content: center;
   }
 `
 
@@ -61,6 +60,7 @@ export const Descricao = styled.p`
   font-size: 14px;
   line-height: 22px;
   display: block;
+  margin-top: 16px;
   margin-bottom: 16px;
   padding: 8px;
 `

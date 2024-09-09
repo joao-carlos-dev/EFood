@@ -21,4 +21,5 @@ export const TipoComida = styled.h4`
   color: ${cores.branco};
   padding-top: 24px;
   margin-bottom: 156px;
+  text-transform: capitalize;
 `

@@ -11,7 +11,6 @@ import {
   Titulo
 } from './styles'
 import estrela from '../../assets/images/estrela.png'
-import { Rest } from '../../pages/Home'
 
 export type Props = {
   id: number

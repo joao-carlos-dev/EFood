@@ -13,6 +13,13 @@ import {
   BotaoModel
 } from './styles'
 import fechar from '../../assets/images/close.png'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
+// import { Rest } from '../../pages/Home'
+
+// export type Props = {
+//   rests: Rest | undefined
+// }
 
 export type Props = {
   titulo: string
@@ -39,6 +46,11 @@ const Produtos = ({ titulo, descricao, image, porcao, preco }: Props) => {
     return descricao
   }
 
+  const dispatch = useDispatch()
+
+  // const addToCart = () => {
+  //   dispatch(add(rests))
+  // }
   return (
     <>
       <Card>

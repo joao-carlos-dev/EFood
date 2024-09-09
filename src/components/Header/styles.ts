@@ -21,10 +21,12 @@ export const Links = styled.ul`
   display: flex;
 `
 
-export const LinkCarrinho = styled.a`
+export const CartButton = styled.a`
   display: flex;
+  cursor: pointer;
 
   img {
     height: 20px;
+    margin-left: 8px;
   }
 `
