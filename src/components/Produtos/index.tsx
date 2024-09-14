@@ -15,6 +15,7 @@ import {
 import fechar from '../../assets/images/close.png'
 import { useDispatch } from 'react-redux'
 import { add } from '../../store/reducers/cart'
+import { Produto } from '../../pages/Home'
 // import { Rest } from '../../pages/Home'
 
 // export type Props = {
@@ -22,11 +23,7 @@ import { add } from '../../store/reducers/cart'
 // }
 
 export type Props = {
-  titulo: string
-  descricao: string
-  image: string
-  porcao: string
-  preco: number
+  pedido: Produto
 }
 
 const formataPreco = (preco: number) => {
@@ -36,7 +33,7 @@ const formataPreco = (preco: number) => {
   }).format(preco)
 }
 
-const Produtos = ({ titulo, descricao, image, porcao, preco }: Props) => {
+const Produtos = ({ pedido }: Props) => {
   const [isVisible, setIsVisible] = useState(false)
 
   const getDescricao = (descricao: string) => {
@@ -48,30 +45,30 @@ const Produtos = ({ titulo, descricao, image, porcao, preco }: Props) => {
 
   const dispatch = useDispatch()
 
-  // const addToCart = () => {
-  //   dispatch(add(rests))
-  // }
+  const addToCart = () => {
+    dispatch(add(pedido))
+  }
   return (
     <>
       <Card>
-        <img src={image} alt="Foto restaurante" />
-        <Titulo>{titulo}</Titulo>
-        <Descricao>{getDescricao(descricao)}</Descricao>
+        <img src={pedido.image} alt="Foto restaurante" />
+        <Titulo>{pedido.titulo}</Titulo>
+        <Descricao>{getDescricao(pedido.descricao)}</Descricao>
         <ButtonContainer onClick={() => setIsVisible(true)}>
           <Link to={''}>Adiconar ao carinho</Link>
         </ButtonContainer>
       </Card>
       <Modal className={isVisible ? 'visivel' : ''}>
         <ModalContent className="container">
-          <img src={image} />
+          <img src={pedido.image} />
           <InfosPrato>
-            <NomePrato>{titulo}</NomePrato>
-            <Prato>{descricao}</Prato>
+            <NomePrato>{pedido.titulo}</NomePrato>
+            <Prato>{pedido.descricao}</Prato>
             <br></br>
             <br></br>
-            <Prato>{porcao}</Prato>
-            <BotaoModel>
-              Adicionar ao carrinho - {formataPreco(preco)}
+            <Prato>{pedido.porcao}</Prato>
+            <BotaoModel onClick={addToCart}>
+              Adicionar ao carrinho - {formataPreco(pedido.preco)}
             </BotaoModel>
           </InfosPrato>
           <div>
