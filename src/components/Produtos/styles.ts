@@ -126,4 +126,5 @@ export const BotaoModel = styled.button`
   width: 218px;
   height: 24px;
   border: none;
+  cursor: pointer;
 `
