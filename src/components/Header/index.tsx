@@ -3,11 +3,13 @@ import { HeaderBar, CartButton, Links } from './styles'
 import logo from '../../assets/images/logo.png'
 import carrinho from '../../assets/images/carrinho.png'
 import planoFundo from '../../assets/images/plano_fundo_header.png'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { open } from '../../store/reducers/cart'
+import { RootReducer } from '../../store'
 
 const Header = () => {
   const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
     dispatch(open())
@@ -27,7 +29,7 @@ const Header = () => {
           <img src={logo} alt="EFOOD" />
         </Link>
         <CartButton onClick={openCart}>
-          0 - produto(s)
+          {items.length} - produto(s)
           <img src={carrinho} alt="carrinho" />
         </CartButton>
       </HeaderBar>

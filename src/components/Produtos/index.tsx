@@ -14,19 +14,14 @@ import {
 } from './styles'
 import fechar from '../../assets/images/close.png'
 import { useDispatch } from 'react-redux'
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
 import { Produto } from '../../pages/Home'
-// import { Rest } from '../../pages/Home'
-
-// export type Props = {
-//   rests: Rest | undefined
-// }
 
 export type Props = {
   pedido: Produto
 }
 
-const formataPreco = (preco: number) => {
+export const formataPreco = (preco: number) => {
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL'
@@ -47,12 +42,13 @@ const Produtos = ({ pedido }: Props) => {
 
   const addToCart = () => {
     dispatch(add(pedido))
+    dispatch(open())
   }
   return (
     <>
       <Card>
-        <img src={pedido.image} alt="Foto restaurante" />
-        <Titulo>{pedido.titulo}</Titulo>
+        <img src={pedido.foto} alt="Foto restaurante" />
+        <Titulo>{pedido.nome}</Titulo>
         <Descricao>{getDescricao(pedido.descricao)}</Descricao>
         <ButtonContainer onClick={() => setIsVisible(true)}>
           <Link to={''}>Adiconar ao carinho</Link>
@@ -60,9 +56,9 @@ const Produtos = ({ pedido }: Props) => {
       </Card>
       <Modal className={isVisible ? 'visivel' : ''}>
         <ModalContent className="container">
-          <img src={pedido.image} />
+          <img src={pedido.foto} />
           <InfosPrato>
-            <NomePrato>{pedido.titulo}</NomePrato>
+            <NomePrato>{pedido.nome}</NomePrato>
             <Prato>{pedido.descricao}</Prato>
             <br></br>
             <br></br>

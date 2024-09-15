@@ -87,5 +87,19 @@ export const CarItem = styled.li`
     position: absolute;
     right: 8px;
     bottom: 8px;
+    cursor: pointer;
   }
+`
+
+export const BotaoCart = styled.button`
+  background-color: ${cores.laranjaClaro};
+  color: ${cores.laranja};
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  width: 218px;
+  width: 100%;
+  height: 24px;
+  border: none;
+  cursor: pointer;
 `

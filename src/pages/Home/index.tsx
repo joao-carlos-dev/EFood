@@ -12,7 +12,7 @@ export type Rest = {
   cardapio: {
     foto: string
     preco: number
-    id: string
+    id: number
     nome: string
     descricao: string
     porcao: string
@@ -20,9 +20,10 @@ export type Rest = {
 }
 
 export type Produto = {
-  titulo: string
+  id: number
+  nome: string
   descricao: string
-  image: string
+  foto: string
   porcao: string
   preco: number
 }
