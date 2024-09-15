@@ -55,7 +55,6 @@ export const PricesPrato = styled.p`
   font-weight: 400;
   color: ${cores.laranja};
   margin-top: 16px;
-  margin-bottom: 32px;
 `
 
 export const NomePrato = styled.h3`
