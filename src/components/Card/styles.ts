@@ -15,7 +15,7 @@ export const CardContainer = styled.div`
     color: ${cores.laranjaClaro};
     margin-top: 32px;
     margin-bottom: 16px;
-    font-weight: 16px;
+    font-size: 16px;
     font-weight: 700;
   }
 

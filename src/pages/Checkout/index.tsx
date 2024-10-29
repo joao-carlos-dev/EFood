@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Card from '../../components/Card'
 import { Overlay } from '../../components/Cart/styles'
-import { BotaoCard, InputCepNumber, InputGroup } from './styles'
+import { BotaoCard, InputCepNumber, InputGroup, Row } from './styles'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -85,67 +85,76 @@ const Checkout = () => {
                 )}
               </small>
             </InputGroup>
-            <InputGroup>
-              <label htmlFor="cardNumber">Número do cartão</label>
-              <input
-                type="text"
-                id="cardNumber"
-                name="cardNumber"
-                value={form.values.cardNumber}
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-              />
-              <small>
-                {getErrorMessage('cardNumber', form.errors.cardNumber)}
-              </small>
-            </InputGroup>
-            <InputGroup maxWidth="87px">
-              <label htmlFor="cardCode">CVV</label>
-              <input
-                type="text"
-                id="cardCode"
-                name="cardCode"
-                value={form.values.cardCode}
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-              />
-              <small>{getErrorMessage('cardCode', form.errors.cardCode)}</small>
-            </InputGroup>
-            <InputGroup maxWidth="155px">
-              <label htmlFor="expiresYear">Mês de vencimento</label>
-              <input
-                type="text"
-                id="expiresYear"
-                name="expiresYear"
-                value={form.values.expiresYear}
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-              />
-              <small>
-                {getErrorMessage('expiresYear', form.errors.expiresYear)}
-              </small>
-            </InputGroup>
-            <InputGroup maxWidth="155px">
-              <label htmlFor="expiresMonth">Ano de vencimento</label>
-              <input
-                type="text"
-                id="expiresMonth"
-                name="expiresMonth"
-                value={form.values.expiresMonth}
-                onChange={form.handleChange}
-                onBlur={form.handleBlur}
-              />
-              <small>
-                {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
-              </small>
-            </InputGroup>
+            <Row columnGap="30px">
+              <InputGroup>
+                <label htmlFor="cardNumber">Número do cartão</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  name="cardNumber"
+                  value={form.values.cardNumber}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                />
+                <small>
+                  {getErrorMessage('cardNumber', form.errors.cardNumber)}
+                </small>
+              </InputGroup>
+              <InputGroup maxWidth="87px">
+                <label htmlFor="cardCode">CVV</label>
+                <input
+                  type="text"
+                  id="cardCode"
+                  name="cardCode"
+                  value={form.values.cardCode}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                />
+                <small>
+                  {getErrorMessage('cardCode', form.errors.cardCode)}
+                </small>
+              </InputGroup>
+            </Row>
+            <Row>
+              <InputGroup maxWidth="155px">
+                <label htmlFor="expiresYear">Mês de vencimento</label>
+                <input
+                  type="text"
+                  id="expiresYear"
+                  name="expiresYear"
+                  value={form.values.expiresYear}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                />
+                <small>
+                  {getErrorMessage('expiresYear', form.errors.expiresYear)}
+                </small>
+              </InputGroup>
+              <InputGroup maxWidth="155px">
+                <label htmlFor="expiresMonth">Ano de vencimento</label>
+                <input
+                  type="text"
+                  id="expiresMonth"
+                  name="expiresMonth"
+                  value={form.values.expiresMonth}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                />
+                <small>
+                  {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
+                </small>
+              </InputGroup>
+            </Row>
             <BotaoCard
               title="Clique aqui para finalizar o pagamento"
               className="margin-top"
             >
               Finalizar pagamento
             </BotaoCard>
-            <BotaoCard title="Clique aqui para voltar para edição do endereço">
+            <BotaoCard
+              onClick={() => setPayWithCard(false)}
+              title="Clique aqui para voltar para edição do endereço"
+            >
               Voltar para edição do endereço
             </BotaoCard>
           </>
@@ -164,6 +173,8 @@ const Checkout = () => {
                 onBlur={form.handleBlur}
               />
               <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
+            </InputGroup>
+            <InputGroup>
               <label htmlFor="address">Endereço</label>
               <input
                 id="address"
@@ -174,6 +185,8 @@ const Checkout = () => {
                 onBlur={form.handleBlur}
               />
               <small>{getErrorMessage('address', form.errors.address)}</small>
+            </InputGroup>
+            <InputGroup>
               <label htmlFor="city">Cidade</label>
               <input
                 id="city"
@@ -184,7 +197,9 @@ const Checkout = () => {
                 onBlur={form.handleBlur}
               />
               <small>{getErrorMessage('city', form.errors.city)}</small>
-              <InputCepNumber>
+            </InputGroup>
+            <Row>
+              <InputCepNumber maxWidth="155px">
                 <label htmlFor="cep">CEP</label>
                 <input
                   id="cep"
@@ -195,6 +210,8 @@ const Checkout = () => {
                   onBlur={form.handleBlur}
                 />
                 <small>{getErrorMessage('cep', form.errors.cep)}</small>
+              </InputCepNumber>
+              <InputCepNumber maxWidth="155px">
                 <label htmlFor="numberHome">Número</label>
                 <input
                   id="numberHome"
@@ -205,9 +222,11 @@ const Checkout = () => {
                   onBlur={form.handleBlur}
                 />
                 <small>
-                  {getErrorMessage('numberHome', form.errors.cardDisplayName)}
+                  {getErrorMessage('numberHome', form.errors.numberHome)}
                 </small>
               </InputCepNumber>
+            </Row>
+            <InputGroup>
               <label htmlFor="complementHome">Complemento (opcional)</label>
               <input
                 id="complementHome"
@@ -221,6 +240,7 @@ const Checkout = () => {
                 {getErrorMessage('complementHome', form.errors.complementHome)}
               </small>
             </InputGroup>
+
             <BotaoCard
               onClick={() => setPayWithCard(true)}
               className="margin-top"

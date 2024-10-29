@@ -5,6 +5,15 @@ type InputGroupProps = {
   maxWidth?: string
 }
 
+type RowProps = {
+  columnGap?: string
+}
+
+export const Row = styled.div<RowProps>`
+  column-gap: ${(props) => props.columnGap || '34px'};
+  display: flex;
+  align-items: flex-end;
+`
 export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
 
@@ -23,14 +32,27 @@ export const InputGroup = styled.div<InputGroupProps>`
     height: 32px;
     padding: 0 8px;
     width: 100%;
+    outline: none;
   }
 `
-export const InputCepNumber = styled.div`
+export const InputCepNumber = styled.div<InputGroupProps>`
+  max-width: ${(props) => props.maxWidth || 'auto'};
+
   label {
+    font-size: 14px;
+    font-weight: 700;
+    color: ${cores.laranjaClaro};
+    display: block;
+    margin: 8px 0;
   }
 
   input {
-    display: block;
+    background-color: ${cores.laranjaClaro};
+    border: 1px solid ${cores.laranjaClaro};
+    height: 32px;
+    padding: 0 8px;
+    width: 100%;
+    outline: none;
   }
 `
 
