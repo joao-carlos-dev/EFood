@@ -1,0 +1,241 @@
+import { useState } from 'react'
+import Card from '../../components/Card'
+import { Overlay } from '../../components/Cart/styles'
+import { BotaoCard, InputCepNumber, InputGroup } from './styles'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
+const Checkout = () => {
+  const [payWithCard, setPayWithCard] = useState(false)
+
+  const form = useFormik({
+    initialValues: {
+      cardDisplayName: '',
+      cardNumber: '',
+      cardCode: '',
+      expiresYear: '',
+      expiresMonth: '',
+      fullName: '',
+      address: '',
+      city: '',
+      cep: '',
+      numberHome: '',
+      complementHome: ''
+    },
+    validationSchema: Yup.object({
+      fullName: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      address: Yup.string().required('O campo é obrigatório'),
+      city: Yup.string().required('O campo é obrigatório'),
+      cep: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      numberHome: Yup.number().required('O campo é obrigatório'),
+      complementHome: Yup.string(),
+      cardDisplayName: Yup.string().when((values, schema) =>
+        payWithCard ? schema.required('O campo é obrigatório') : schema
+      ),
+      cardNumber: Yup.string().when((values, schema) =>
+        payWithCard ? schema.required('O campo é obrigatório') : schema
+      ),
+      cardCode: Yup.string().when((values, schema) =>
+        payWithCard ? schema.required('O campo é obrigatório') : schema
+      ),
+      expiresYear: Yup.string().when((values, schema) =>
+        payWithCard ? schema.required('O campo é obrigatório') : schema
+      ),
+      expiresMonth: Yup.string().when((values, schema) =>
+        payWithCard ? schema.required('O campo é obrigatório') : schema
+      )
+    }),
+    onSubmit: (values) => {
+      console.log(values)
+    }
+  })
+
+  const getErrorMessage = (fieldName: string, message?: string) => {
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
+
+    if (isTouched && isInvalid) return message
+    return ''
+  }
+
+  return (
+    <form onSubmit={form.handleSubmit} className="container">
+      <Overlay />
+      {payWithCard ? (
+        <Card title="Pagamento - Valor a pagar R$ 190,90">
+          <>
+            <InputGroup>
+              <label htmlFor="cardDisplayName">Nome no cartão</label>
+              <input
+                type="text"
+                id="cardDisplayName"
+                name="cardDisplayName"
+                value={form.values.cardDisplayName}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>
+                {getErrorMessage(
+                  'cardDisplayName',
+                  form.errors.cardDisplayName
+                )}
+              </small>
+            </InputGroup>
+            <InputGroup>
+              <label htmlFor="cardNumber">Número do cartão</label>
+              <input
+                type="text"
+                id="cardNumber"
+                name="cardNumber"
+                value={form.values.cardNumber}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>
+                {getErrorMessage('cardNumber', form.errors.cardNumber)}
+              </small>
+            </InputGroup>
+            <InputGroup maxWidth="87px">
+              <label htmlFor="cardCode">CVV</label>
+              <input
+                type="text"
+                id="cardCode"
+                name="cardCode"
+                value={form.values.cardCode}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>{getErrorMessage('cardCode', form.errors.cardCode)}</small>
+            </InputGroup>
+            <InputGroup maxWidth="155px">
+              <label htmlFor="expiresYear">Mês de vencimento</label>
+              <input
+                type="text"
+                id="expiresYear"
+                name="expiresYear"
+                value={form.values.expiresYear}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>
+                {getErrorMessage('expiresYear', form.errors.expiresYear)}
+              </small>
+            </InputGroup>
+            <InputGroup maxWidth="155px">
+              <label htmlFor="expiresMonth">Ano de vencimento</label>
+              <input
+                type="text"
+                id="expiresMonth"
+                name="expiresMonth"
+                value={form.values.expiresMonth}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>
+                {getErrorMessage('expiresMonth', form.errors.expiresMonth)}
+              </small>
+            </InputGroup>
+            <BotaoCard
+              title="Clique aqui para finalizar o pagamento"
+              className="margin-top"
+            >
+              Finalizar pagamento
+            </BotaoCard>
+            <BotaoCard title="Clique aqui para voltar para edição do endereço">
+              Voltar para edição do endereço
+            </BotaoCard>
+          </>
+        </Card>
+      ) : (
+        <Card title="Entrega">
+          <>
+            <InputGroup>
+              <label htmlFor="fullName">Quem irá receber</label>
+              <input
+                id="fullName"
+                type="text"
+                name="fullName"
+                value={form.values.fullName}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
+              <label htmlFor="address">Endereço</label>
+              <input
+                id="address"
+                type="text"
+                name="address"
+                value={form.values.address}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>{getErrorMessage('address', form.errors.address)}</small>
+              <label htmlFor="city">Cidade</label>
+              <input
+                id="city"
+                type="text"
+                name="city"
+                value={form.values.city}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>{getErrorMessage('city', form.errors.city)}</small>
+              <InputCepNumber>
+                <label htmlFor="cep">CEP</label>
+                <input
+                  id="cep"
+                  type="text"
+                  name="cep"
+                  value={form.values.cep}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                />
+                <small>{getErrorMessage('cep', form.errors.cep)}</small>
+                <label htmlFor="numberHome">Número</label>
+                <input
+                  id="numberHome"
+                  type="number"
+                  name="numberHome"
+                  value={form.values.numberHome}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                />
+                <small>
+                  {getErrorMessage('numberHome', form.errors.cardDisplayName)}
+                </small>
+              </InputCepNumber>
+              <label htmlFor="complementHome">Complemento (opcional)</label>
+              <input
+                id="complementHome"
+                type="text"
+                name="complementHome"
+                value={form.values.complementHome}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+              />
+              <small>
+                {getErrorMessage('complementHome', form.errors.complementHome)}
+              </small>
+            </InputGroup>
+            <BotaoCard
+              onClick={() => setPayWithCard(true)}
+              className="margin-top"
+              title="Clique aqui para continuar para o pagamento"
+            >
+              Continuar com o pagamento
+            </BotaoCard>
+            <BotaoCard title="Clique voltar para o carrinho">
+              Voltar para o carrinho
+            </BotaoCard>
+          </>
+        </Card>
+      )}
+    </form>
+  )
+}
+
+export default Checkout

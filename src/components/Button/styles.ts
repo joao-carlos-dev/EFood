@@ -11,7 +11,6 @@ export const ButtonContainer = styled.button`
   padding: 4px 6px;
   border: none;
 `
-// align-items: flex-end;
 
 export const ButtonLink = styled(Link)`
   background-color: ${cores.laranja};
