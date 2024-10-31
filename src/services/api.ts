@@ -1,5 +1,36 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Rest } from '../pages/Home'
+import { queries } from '@testing-library/react'
+
+type Product = {
+  id: number
+  price: number
+}
+
+type PurchasePayload = {
+  products: Product[]
+  delivery: {
+    receiver: string
+    address: {
+      description?: string
+      city: string
+      zipCode: string
+      number: number
+      complement?: string
+    }
+  }
+  payment: {
+    card: {
+      name: string
+      number: number
+      code: number
+      expires: {
+        month: number
+        year: number
+      }
+    }
+  }
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -14,10 +45,21 @@ const api = createApi({
     }),
     getBanner: builder.query<Rest, string>({
       query: (id) => `restaurantes/${id}`
+    }),
+    purchase: builder.mutation<any, PurchasePayload>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
 
-export const { useGetRestaurantQuery, useGetProdutQuery, useGetBannerQuery } =
-  api
+export const {
+  useGetRestaurantQuery,
+  useGetProdutQuery,
+  useGetBannerQuery,
+  usePurchaseMutation
+} = api
 export default api

@@ -19,6 +19,10 @@ export const CardContainer = styled.div`
     font-weight: 700;
   }
 
+  p {
+    color: ${cores.laranjaClaro};
+  }
+
   small {
     color: ${cores.laranjaClaro};
   }
