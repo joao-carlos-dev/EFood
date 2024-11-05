@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
   margin-bottom: 32px;
   max-width: 320px;
 
@@ -16,30 +16,30 @@ export const Card = styled.div`
 
   ${ButtonContainer} {
     margin: 8px;
-    background-color: ${cores.laranjaClaro};
+    background-color: ${colors.lightOrange};
     width: 95%;
     box-sizing: border-box;
     cursor: pointer;
 
     a {
-      color: ${cores.laranja};
+      color: ${colors.orange};
     }
   }
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 16px;
   font-weight: 900;
   margin-top: 8px;
   margin-bottom: 16px;
   margin-left: 8px;
-  color: ${cores.laranjaClaro};
+  color: ${colors.lightOrange};
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
-  color: ${cores.laranjaClaro};
+  color: ${colors.lightOrange};
   display: block;
   margin-bottom: 16px;
   padding: 8px;
@@ -76,7 +76,7 @@ export const ModalContent = styled.div`
   display: flex;
   position: relative;
   z-index: 1;
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
 
   div {
     img {
@@ -96,13 +96,13 @@ export const ModalContent = styled.div`
   }
 `
 
-export const InfosPrato = styled.div`
+export const InfosDish = styled.div`
   display: block;
   margin-left: 24px;
 `
 
-export const NomePrato = styled.h4`
-  color: ${cores.branco};
+export const NameDish = styled.h4`
+  color: ${colors.white};
   font-size: 18px;
   font-weight: 900;
   align: center;
@@ -110,16 +110,16 @@ export const NomePrato = styled.h4`
   margin-bottom: 16px;
 `
 
-export const Prato = styled.p`
-  color: ${cores.branco};
+export const Dish = styled.p`
+  color: ${colors.white};
   font-size: 14px;
   line-height: 22px;
   margin-bottom: 16px;
 `
 
-export const BotaoModel = styled.button`
-  background-color: ${cores.laranjaClaro};
-  color: ${cores.laranja};
+export const ButtonModel = styled.button`
+  background-color: ${colors.lightOrange};
+  color: ${colors.orange};
   font-size: 14px;
   font-weight: 700;
   text-align: center;

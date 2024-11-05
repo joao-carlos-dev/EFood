@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const CardContainer = styled.div`
   position: fixed;
@@ -9,10 +9,10 @@ export const CardContainer = styled.div`
   max-width: 360px;
   width: 100%;
   height: 100%;
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
 
   h2 {
-    color: ${cores.laranjaClaro};
+    color: ${colors.lightOrange};
     margin-top: 32px;
     margin-bottom: 16px;
     font-size: 16px;
@@ -20,11 +20,12 @@ export const CardContainer = styled.div`
   }
 
   p {
-    color: ${cores.laranjaClaro};
+    color: ${colors.lightOrange};
+    text-align: justify;
   }
 
   small {
-    color: ${cores.laranjaClaro};
+    color: ${colors.lightOrange};
   }
 
   .margin-top {

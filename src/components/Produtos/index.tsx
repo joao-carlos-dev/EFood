@@ -1,42 +1,22 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ButtonContainer } from '../Button/styles'
-import {
-  Card,
-  Descricao,
-  Prato,
-  InfosPrato,
-  Modal,
-  ModalContent,
-  NomePrato,
-  Titulo,
-  BotaoModel
-} from './styles'
-import fechar from '../../assets/images/close.png'
 import { useDispatch } from 'react-redux'
-import { add, open } from '../../store/reducers/cart'
+
 import { Produto } from '../../pages/Home'
+import { getDescription, parseToBrl } from '../../utils'
+
+import close from '../../assets/images/close.png'
+
+import { ButtonContainer } from '../Button/styles'
+import * as S from './styles'
+import { add, open } from '../../store/reducers/cart'
 
 export type Props = {
   pedido: Produto
 }
 
-export const formataPreco = (preco: number) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
-
 const Produtos = ({ pedido }: Props) => {
   const [isVisible, setIsVisible] = useState(false)
-
-  const getDescricao = (descricao: string) => {
-    if (descricao.length > 250) {
-      return descricao.slice(0, 250) + '...'
-    }
-    return descricao
-  }
 
   const dispatch = useDispatch()
 
@@ -46,37 +26,37 @@ const Produtos = ({ pedido }: Props) => {
   }
   return (
     <>
-      <Card>
+      <S.Card>
         <img src={pedido.foto} alt="Foto restaurante" />
-        <Titulo>{pedido.nome}</Titulo>
-        <Descricao>{getDescricao(pedido.descricao)}</Descricao>
+        <S.Title>{pedido.nome}</S.Title>
+        <S.Description>{getDescription(pedido.descricao)}</S.Description>
         <ButtonContainer onClick={() => setIsVisible(true)}>
           <Link to={''}>Adiconar ao carinho</Link>
         </ButtonContainer>
-      </Card>
-      <Modal className={isVisible ? 'visivel' : ''}>
-        <ModalContent className="container">
+      </S.Card>
+      <S.Modal className={isVisible ? 'visivel' : ''}>
+        <S.ModalContent className="container">
           <img src={pedido.foto} />
-          <InfosPrato>
-            <NomePrato>{pedido.nome}</NomePrato>
-            <Prato>{pedido.descricao}</Prato>
+          <S.InfosDish>
+            <S.NameDish>{pedido.nome}</S.NameDish>
+            <S.Dish>{pedido.descricao}</S.Dish>
             <br></br>
             <br></br>
-            <Prato>{pedido.porcao}</Prato>
-            <BotaoModel onClick={addToCart}>
-              Adicionar ao carrinho - {formataPreco(pedido.preco)}
-            </BotaoModel>
-          </InfosPrato>
+            <S.Dish>{pedido.porcao}</S.Dish>
+            <S.ButtonModel onClick={addToCart}>
+              Adicionar ao carrinho - {parseToBrl(pedido.preco)}
+            </S.ButtonModel>
+          </S.InfosDish>
           <div>
             <img
-              src={fechar}
+              src={close}
               alt="Ícone de fechar"
               onClick={() => setIsVisible(false)}
             />
           </div>
-        </ModalContent>
+        </S.ModalContent>
         <div className="overlay"></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

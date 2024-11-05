@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom'
-import { ButtonContainer } from '../Button/styles'
+
+import { getDescription } from '../../utils'
 import Tag from '../Tag'
-import {
-  Avaliacao,
-  Border,
-  Card,
-  Descricao,
-  Infos,
-  Nota,
-  Titulo
-} from './styles'
+
 import estrela from '../../assets/images/estrela.png'
+
+import { ButtonContainer } from '../Button/styles'
+import * as S from './styles'
 
 export type Props = {
   id: number
@@ -30,35 +26,28 @@ const Restaurants = ({
   image,
   avaliacao
 }: Props) => {
-  const getDescricao = (descricao: string) => {
-    if (descricao.length > 250) {
-      return descricao.slice(0, 250) + '...'
-    }
-    return descricao
-  }
-
   return (
-    <Card>
+    <S.Card>
       <img src={image} alt="Imagem do restaurante" />
-      <Infos>
+      <S.Infos>
         {infos.map((info) => (
           <Tag key={info}>{info}</Tag>
         ))}
-      </Infos>
-      <Border>
-        <Titulo>
+      </S.Infos>
+      <S.Border>
+        <S.Title>
           {titulo}
-          <Nota>
-            <Avaliacao>{avaliacao}</Avaliacao>
+          <S.Grade>
+            <S.Assessment>{avaliacao}</S.Assessment>
             <img src={estrela} alt="estrela" />
-          </Nota>
-        </Titulo>
-        <Descricao>{getDescricao(descricao)}</Descricao>
+          </S.Grade>
+        </S.Title>
+        <S.Description>{getDescription(descricao)}</S.Description>
         <ButtonContainer>
           <Link to={`/perfil/${id}`}>Saiba mais</Link>
         </ButtonContainer>
-      </Border>
-    </Card>
+      </S.Border>
+    </S.Card>
   )
 }
 

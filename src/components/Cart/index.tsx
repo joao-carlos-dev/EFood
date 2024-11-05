@@ -1,18 +1,11 @@
-import {
-  BotaoCart,
-  CarItem,
-  CartContainer,
-  NomePrato,
-  Overlay,
-  PricesPrato,
-  PricesTotal,
-  Sidebar
-} from './styles'
-
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+
+import { parseToBrl } from '../../utils'
+
 import { close, remove } from '../../store/reducers/cart'
-import { formataPreco } from '../Produtos'
+
+import * as S from './styles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -35,27 +28,27 @@ const Cart = () => {
   }
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar>
+    <S.CartContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeCart} />
+      <S.Sidebar>
         <ul>
           {items.map((item) => (
-            <CarItem key={item.id}>
+            <S.CarItem key={item.id}>
               <img src={item.foto} alt={item.nome} />
               <div>
-                <NomePrato>{item.nome}</NomePrato>
-                <PricesPrato>{formataPreco(item.preco)}</PricesPrato>
+                <S.NameDish>{item.nome}</S.NameDish>
+                <S.PricesDish>{parseToBrl(item.preco)}</S.PricesDish>
               </div>
               <button onClick={() => removeItem(item.id)} type="button" />
-            </CarItem>
+            </S.CarItem>
           ))}
         </ul>
-        <PricesTotal>
-          Valor total <span>{formataPreco(getTotalPrice())}</span>
-        </PricesTotal>
-        <BotaoCart>Continuar para a entrega</BotaoCart>
-      </Sidebar>
-    </CartContainer>
+        <S.PricesTotal>
+          Valor total <span>{parseToBrl(getTotalPrice())}</span>
+        </S.PricesTotal>
+        <S.ButtonCart>Continuar para a entrega</S.ButtonCart>
+      </S.Sidebar>
+    </S.CartContainer>
   )
 }
 

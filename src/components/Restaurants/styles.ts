@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
-  background-color: ${cores.branco};
+  background-color: ${colors.white};
   position: relative;
   margin-bottom: 48px;
 
@@ -21,7 +21,7 @@ export const Card = styled.div`
     margin-left: 8px;
 
     a {
-      color: ${cores.branco};
+      color: ${colors.white};
     }
   }
 `
@@ -29,10 +29,10 @@ export const Card = styled.div`
 export const Border = styled.div`
   border: 1px;
   border-style: solid;
-  border-color: ${cores.laranja};
+  border-color: ${colors.orange};
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 18px;
   font-weight: 700;
   margin-top: 8px;
@@ -40,7 +40,7 @@ export const Titulo = styled.h3`
   display: flex;
   justify-content: space-between;
 `
-export const Nota = styled.div`
+export const Grade = styled.div`
   margin-right: 8px;
   display: flex;
 
@@ -51,12 +51,12 @@ export const Nota = styled.div`
   }
 `
 
-export const Avaliacao = styled.h4`
+export const Assessment = styled.h4`
   margin-right: 8px;
   font-size: 18px;
   font-weight: 700;
 `
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   display: block;

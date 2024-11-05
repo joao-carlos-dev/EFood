@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
-import { BotaoModel } from '../Produtos/styles'
+import { colors } from '../../styles'
+import { ButtonModel } from '../Produtos/styles'
 import lixeira from '../../assets/images/lixeira-de-reciclagem 1.png'
 
 export const Overlay = styled.div`
@@ -29,13 +29,13 @@ export const CartContainer = styled.div`
 `
 
 export const Sidebar = styled.aside`
-  background-color: ${cores.laranja};
+  background-color: ${colors.orange};
   z-index: 1;
   padding: 32px 8px 0 8px;
   max-width: 360px;
   width: 100%;
 
-  ${BotaoModel} {
+  ${ButtonModel} {
     max-width: 100%;
     width: 100%;
   }
@@ -43,30 +43,30 @@ export const Sidebar = styled.aside`
 export const PricesTotal = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: ${cores.laranjaClaro};
+  color: ${colors.lightOrange};
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 16px;
 `
 
-export const PricesPrato = styled.p`
+export const PricesDish = styled.p`
   font-size: 14px;
   font-weight: 400;
-  color: ${cores.laranja};
+  color: ${colors.orange};
   margin-top: 16px;
 `
 
-export const NomePrato = styled.h3`
+export const NameDish = styled.h3`
   font-size: 18px;
   font-weight: 900;
-  color: ${cores.laranja};
+  color: ${colors.orange};
   margin-top: 8px;
 `
 
 export const CarItem = styled.li`
   display: flex;
-  background-color: ${cores.laranjaClaro};
+  background-color: ${colors.lightOrange};
   margin-bottom: 16px;
   position: relative;
 
@@ -90,9 +90,9 @@ export const CarItem = styled.li`
   }
 `
 
-export const BotaoCart = styled.button`
-  background-color: ${cores.laranjaClaro};
-  color: ${cores.laranja};
+export const ButtonCart = styled.button`
+  background-color: ${colors.lightOrange};
+  color: ${colors.orange};
   font-size: 14px;
   font-weight: 700;
   text-align: center;

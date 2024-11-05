@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 type InputGroupProps = {
   maxWidth?: string
@@ -21,14 +21,14 @@ export const InputGroup = styled.div<InputGroupProps>`
   label {
     font-size: 14px;
     font-weight: 700;
-    color: ${cores.laranjaClaro};
+    color: ${colors.lightOrange};
     display: block;
     margin: 8px 0;
   }
 
   input {
-    background-color: ${cores.laranjaClaro};
-    border: 1px solid ${cores.laranjaClaro};
+    background-color: ${colors.lightOrange};
+    border: 1px solid ${colors.lightOrange};
     height: 32px;
     padding: 0 8px;
     width: 100%;
@@ -41,14 +41,14 @@ export const InputCepNumber = styled.div<InputGroupProps>`
   label {
     font-size: 14px;
     font-weight: 700;
-    color: ${cores.laranjaClaro};
+    color: ${colors.lightOrange};
     display: block;
     margin: 8px 0;
   }
 
   input {
-    background-color: ${cores.laranjaClaro};
-    border: 1px solid ${cores.laranjaClaro};
+    background-color: ${colors.lightOrange};
+    border: 1px solid ${colors.lightOrange};
     height: 32px;
     padding: 0 8px;
     width: 100%;
@@ -56,9 +56,9 @@ export const InputCepNumber = styled.div<InputGroupProps>`
   }
 `
 
-export const BotaoCard = styled.button`
-  background-color: ${cores.laranjaClaro};
-  color: ${cores.laranja};
+export const ButtonCard = styled.button`
+  background-color: ${colors.lightOrange};
+  color: ${colors.orange};
   font-size: 14px;
   font-weight: 700;
   text-align: center;

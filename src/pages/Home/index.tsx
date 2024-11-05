@@ -1,10 +1,12 @@
+import { useGetRestaurantQuery } from '../../services/api'
+
 import Hero from '../../components/Hero'
 import RestaurantsList from '../../components/RestaurantsList'
-import { useGetRestaurantQuery } from '../../services/api'
 
 export type Rest = {
   id: number
   titulo: string
+  destacdo?: boolean
   tipo: string
   avaliacao: string
   descricao: string
@@ -29,7 +31,7 @@ export type Produto = {
 }
 
 const Home = () => {
-  const { data: restaurantes, isLoading } = useGetRestaurantQuery()
+  const { data: restaurantes } = useGetRestaurantQuery()
 
   if (restaurantes) {
     return (

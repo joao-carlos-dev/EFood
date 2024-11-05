@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import Card from '../../components/Card'
-import { Overlay } from '../../components/Cart/styles'
-import { BotaoCard, InputCepNumber, InputGroup, Row } from './styles'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+
+import Card from '../../components/Card'
+
 import { usePurchaseMutation } from '../../services/api'
+
+import { Overlay } from '../../components/Cart/styles'
+import * as S from './styles'
 
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -96,7 +98,7 @@ const Checkout = () => {
     <div className="container">
       <Overlay />
       {isSuccess ? (
-        <Card title="Pedido realizado - " {data.orderId}>
+        <Card title={`Pedido realizado - ${data.orderId}`}>
           <>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
@@ -115,6 +117,13 @@ const Checkout = () => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </p>
+            <S.ButtonCard
+              type="submit"
+              className="margin-top"
+              title="clique aqui para confirmar seu pedido"
+            >
+              Concluir
+            </S.ButtonCard>
           </>
         </Card>
       ) : (
@@ -122,7 +131,7 @@ const Checkout = () => {
           {payWithCard ? (
             <Card title="Pagamento - Valor a pagar R$ 190,90">
               <>
-                <InputGroup>
+                <S.InputGroup>
                   <label htmlFor="cardDisplayName">Nome no cartão</label>
                   <input
                     type="text"
@@ -138,9 +147,9 @@ const Checkout = () => {
                       form.errors.cardDisplayName
                     )}
                   </small>
-                </InputGroup>
-                <Row columnGap="30px">
-                  <InputGroup>
+                </S.InputGroup>
+                <S.Row columnGap="30px">
+                  <S.InputGroup>
                     <label htmlFor="cardNumber">Número do cartão</label>
                     <input
                       type="number"
@@ -153,8 +162,8 @@ const Checkout = () => {
                     <small>
                       {getErrorMessage('cardNumber', form.errors.cardNumber)}
                     </small>
-                  </InputGroup>
-                  <InputGroup maxWidth="87px">
+                  </S.InputGroup>
+                  <S.InputGroup maxWidth="87px">
                     <label htmlFor="cardCode">CVV</label>
                     <input
                       type="number"
@@ -167,10 +176,10 @@ const Checkout = () => {
                     <small>
                       {getErrorMessage('cardCode', form.errors.cardCode)}
                     </small>
-                  </InputGroup>
-                </Row>
-                <Row>
-                  <InputGroup maxWidth="155px">
+                  </S.InputGroup>
+                </S.Row>
+                <S.Row>
+                  <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresYear">Mês de vencimento</label>
                     <input
                       type="text"
@@ -183,8 +192,8 @@ const Checkout = () => {
                     <small>
                       {getErrorMessage('expiresYear', form.errors.expiresYear)}
                     </small>
-                  </InputGroup>
-                  <InputGroup maxWidth="155px">
+                  </S.InputGroup>
+                  <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresMonth">Ano de vencimento</label>
                     <input
                       type="text"
@@ -200,26 +209,26 @@ const Checkout = () => {
                         form.errors.expiresMonth
                       )}
                     </small>
-                  </InputGroup>
-                </Row>
-                <BotaoCard
+                  </S.InputGroup>
+                </S.Row>
+                <S.ButtonCard
                   title="Clique aqui para finalizar o pagamento"
                   className="margin-top"
                 >
                   Finalizar pagamento
-                </BotaoCard>
-                <BotaoCard
+                </S.ButtonCard>
+                <S.ButtonCard
                   onClick={() => setPayWithCard(false)}
                   title="Clique aqui para voltar para edição do endereço"
                 >
                   Voltar para edição do endereço
-                </BotaoCard>
+                </S.ButtonCard>
               </>
             </Card>
           ) : (
             <Card title="Entrega">
               <>
-                <InputGroup>
+                <S.InputGroup>
                   <label htmlFor="fullName">Quem irá receber</label>
                   <input
                     id="fullName"
@@ -232,8 +241,8 @@ const Checkout = () => {
                   <small>
                     {getErrorMessage('fullName', form.errors.fullName)}
                   </small>
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="address">Endereço</label>
                   <input
                     id="address"
@@ -246,8 +255,8 @@ const Checkout = () => {
                   <small>
                     {getErrorMessage('address', form.errors.address)}
                   </small>
-                </InputGroup>
-                <InputGroup>
+                </S.InputGroup>
+                <S.InputGroup>
                   <label htmlFor="city">Cidade</label>
                   <input
                     id="city"
@@ -258,9 +267,9 @@ const Checkout = () => {
                     onBlur={form.handleBlur}
                   />
                   <small>{getErrorMessage('city', form.errors.city)}</small>
-                </InputGroup>
-                <Row>
-                  <InputCepNumber maxWidth="155px">
+                </S.InputGroup>
+                <S.Row>
+                  <S.InputCepNumber maxWidth="155px">
                     <label htmlFor="cep">CEP</label>
                     <input
                       id="cep"
@@ -271,8 +280,8 @@ const Checkout = () => {
                       onBlur={form.handleBlur}
                     />
                     <small>{getErrorMessage('cep', form.errors.cep)}</small>
-                  </InputCepNumber>
-                  <InputCepNumber maxWidth="155px">
+                  </S.InputCepNumber>
+                  <S.InputCepNumber maxWidth="155px">
                     <label htmlFor="numberHome">Número</label>
                     <input
                       id="numberHome"
@@ -285,9 +294,9 @@ const Checkout = () => {
                     <small>
                       {getErrorMessage('numberHome', form.errors.numberHome)}
                     </small>
-                  </InputCepNumber>
-                </Row>
-                <InputGroup>
+                  </S.InputCepNumber>
+                </S.Row>
+                <S.InputGroup>
                   <label htmlFor="complementHome">Complemento (opcional)</label>
                   <input
                     id="complementHome"
@@ -303,18 +312,18 @@ const Checkout = () => {
                       form.errors.complementHome
                     )}
                   </small>
-                </InputGroup>
+                </S.InputGroup>
 
-                <BotaoCard
+                <S.ButtonCard
                   onClick={() => setPayWithCard(true)}
                   className="margin-top"
                   title="Clique aqui para continuar para o pagamento"
                 >
                   Continuar com o pagamento
-                </BotaoCard>
-                <BotaoCard title="Clique voltar para o carrinho">
+                </S.ButtonCard>
+                <S.ButtonCard title="Clique voltar para o carrinho">
                   Voltar para o carrinho
-                </BotaoCard>
+                </S.ButtonCard>
               </>
             </Card>
           )}

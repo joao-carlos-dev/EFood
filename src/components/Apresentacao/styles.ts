@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
-export const Imagem = styled.div`
+export const Image = styled.div`
   width: 100%;
   height: 280px;
   display: block;
@@ -10,15 +10,15 @@ export const Imagem = styled.div`
   background-repeat: no-repeat;
 `
 
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   font-weight: 900;
   font-size: 32px;
-  color: ${cores.branco};
+  color: ${colors.white};
 `
 
-export const TipoComida = styled.h4`
+export const typeOfFood = styled.h4`
   font-weight: 100;
-  color: ${cores.branco};
+  color: ${colors.white};
   padding-top: 24px;
   margin-bottom: 156px;
   text-transform: capitalize;

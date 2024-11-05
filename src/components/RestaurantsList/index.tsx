@@ -1,6 +1,8 @@
 import { Rest } from '../../pages/Home'
+
 import Restaurants from '../Restaurants'
-import { Container, List } from './styles'
+
+import * as S from './styles'
 
 export type Props = {
   rests: Rest[]
@@ -18,9 +20,9 @@ const RestaurantsList = ({ rests }: Props) => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <div className="container">
-        <List>
+        <S.List>
           {rests.map((rests) => (
             <Restaurants
               key={rests.id}
@@ -32,9 +34,9 @@ const RestaurantsList = ({ rests }: Props) => {
               infos={getGameTags(rests)}
             />
           ))}
-        </List>
+        </S.List>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

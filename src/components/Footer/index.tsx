@@ -1,50 +1,46 @@
 import { Link } from 'react-router-dom'
-import logo from '../../assets/images/logo.png'
+
+import * as S from './styles'
+
+import soon from '../../assets/images/logo.png'
 import insta from '../../assets/images/insta-logo.png'
 import face from '../../assets/images/face-logo .png'
 import twitter from '../../assets/images/twitter-logo.png'
-import {
-  Container,
-  FooterSection,
-  Links,
-  LinkSocial,
-  TextoFooter
-} from './styles'
 
 const Footer = () => (
-  <Container>
+  <S.Container>
     <div className="container">
       <Link to="/">
-        <img src={logo} alt="EFOOD" />
+        <img src={soon} alt="EFOOD" />
       </Link>
-      <FooterSection>
-        <Links>
+      <S.FooterSection>
+        <S.Links>
           <li>
-            <LinkSocial>
+            <S.LinkSocial>
               <img src={insta} alt="instagran" />
-            </LinkSocial>
+            </S.LinkSocial>
           </li>
           <li>
-            <LinkSocial>
+            <S.LinkSocial>
               <img src={face} alt="facebook" />
-            </LinkSocial>
+            </S.LinkSocial>
           </li>
           <li>
-            <LinkSocial>
+            <S.LinkSocial>
               <img src={twitter} alt="twitter" />
-            </LinkSocial>
+            </S.LinkSocial>
           </li>
-        </Links>
-      </FooterSection>
-      <FooterSection>
-        <TextoFooter>
+        </S.Links>
+      </S.FooterSection>
+      <S.FooterSection>
+        <S.TextFooter>
           A efood é uma plataforma para divulgação de estabelecimentos, a
           responsabilidade pela entrega, qualidade dos produtos é toda do
           estabelecimento contratado.
-        </TextoFooter>
-      </FooterSection>
+        </S.TextFooter>
+      </S.FooterSection>
     </div>
-  </Container>
+  </S.Container>
 )
 
 export default Footer

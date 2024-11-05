@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Rest } from '../pages/Home'
-import { queries } from '@testing-library/react'
+
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 type Product = {
   id: number

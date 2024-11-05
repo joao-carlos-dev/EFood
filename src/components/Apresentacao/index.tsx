@@ -1,5 +1,6 @@
-import { Imagem, TipoComida, Titulo } from './styles'
 import { Rest } from '../../pages/Home'
+
+import * as S from './styles'
 
 export type Props = {
   rests: Rest | undefined
@@ -7,12 +8,12 @@ export type Props = {
 
 const Apresentacao = ({ rests }: Props) => {
   return (
-    <Imagem style={{ backgroundImage: `url(${rests?.capa})` }}>
+    <S.Image style={{ backgroundImage: `url(${rests?.capa})` }}>
       <div className="container">
-        <TipoComida>{rests?.tipo}</TipoComida>
-        <Titulo>{rests?.titulo}</Titulo>
+        <S.typeOfFood>{rests?.tipo}</S.typeOfFood>
+        <S.Title>{rests?.titulo}</S.Title>
       </div>
-    </Imagem>
+    </S.Image>
   )
 }
 

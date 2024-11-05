@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const HeaderBar = styled.header`
   height: 186px;
@@ -11,7 +11,7 @@ export const HeaderBar = styled.header`
   margin: 0 auto;
 
   a {
-    color: ${cores.laranja};
+    color: ${colors.orange};
     text-decoration: none;
     font-weight: 900;
   }

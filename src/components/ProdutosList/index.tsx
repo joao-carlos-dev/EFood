@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-key */
 import { Rest } from '../../pages/Home'
 
+import * as S from './styles'
+
 import Produtos from '../Produtos'
-import { Container, List } from './styles'
 
 export type Props = {
   rests: Rest | undefined
@@ -10,13 +11,13 @@ export type Props = {
 
 const ProdutoList = ({ rests }: Props) => {
   return (
-    <Container>
+    <S.Container>
       <div className="container">
-        <List>
+        <S.List>
           {rests && rests.cardapio.map((rest) => <Produtos pedido={rest} />)}
-        </List>
+        </S.List>
       </div>
-    </Container>
+    </S.Container>
   )
 }
 

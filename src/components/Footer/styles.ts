@@ -1,16 +1,10 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Container = styled.footer`
-  background-color: ${cores.laranjaClaro};
+  background-color: ${colors.lightOrange};
   padding: 32px 0;
   text-align: center;
-`
-
-export const LogoFooter = styled.img`
-  width: 125px;
-  margin-top: 40px;
-  margin-bottom: 32px;
 `
 
 export const Links = styled.ul`
@@ -27,7 +21,7 @@ export const FooterSection = styled.div`
   margin-top: 32px;
 `
 
-export const TextoFooter = styled.p`
+export const TextFooter = styled.p`
   font-size: 10px;
   font-weight: 400;
 `
