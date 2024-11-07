@@ -33,6 +33,10 @@ export const InputGroup = styled.div<InputGroupProps>`
     padding: 0 8px;
     width: 100%;
     outline: none;
+
+    &.error {
+      border: 2px solid red;
+    }
   }
 `
 export const InputCepNumber = styled.div<InputGroupProps>`
@@ -53,6 +57,10 @@ export const InputCepNumber = styled.div<InputGroupProps>`
     padding: 0 8px;
     width: 100%;
     outline: none;
+
+    &.error {
+      border: 2px solid red;
+    }
   }
 `
 

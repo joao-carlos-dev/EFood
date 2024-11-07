@@ -24,10 +24,6 @@ export const CardContainer = styled.div`
     text-align: justify;
   }
 
-  small {
-    color: ${colors.lightOrange};
-  }
-
   .margin-top {
     margin-top: 24px;
   }

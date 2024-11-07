@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -5,13 +7,16 @@ import * as Yup from 'yup'
 import Card from '../../components/Card'
 
 import { usePurchaseMutation } from '../../services/api'
+import { RootReducer } from '../../store'
 
 import { Overlay } from '../../components/Cart/styles'
 import * as S from './styles'
+import { getTotalPrice, parseToBrl } from '../../utils'
 
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
   const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   const form = useFormik({
     initialValues: {
@@ -86,12 +91,16 @@ const Checkout = () => {
     }
   })
 
-  const getErrorMessage = (fieldName: string, message?: string) => {
+  const checkInputHasError = (fieldName: string) => {
     const isTouched = fieldName in form.touched
     const isInvalid = fieldName in form.errors
+    const hasError = isTouched && isInvalid
 
-    if (isTouched && isInvalid) return message
-    return ''
+    return hasError
+  }
+
+  if (items.length === 0) {
+    return <Navigate to="/" />
   }
 
   return (
@@ -129,7 +138,11 @@ const Checkout = () => {
       ) : (
         <form onSubmit={form.handleSubmit}>
           {payWithCard ? (
-            <Card title="Pagamento - Valor a pagar R$ 190,90">
+            <Card
+              title={`Pagamento - Valor a pagar ${parseToBrl(
+                getTotalPrice(items)
+              )}`}
+            >
               <>
                 <S.InputGroup>
                   <label htmlFor="cardDisplayName">Nome no cartão</label>
@@ -140,13 +153,10 @@ const Checkout = () => {
                     value={form.values.cardDisplayName}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      checkInputHasError('cardDisplayName') ? 'error' : ''
+                    }
                   />
-                  <small>
-                    {getErrorMessage(
-                      'cardDisplayName',
-                      form.errors.cardDisplayName
-                    )}
-                  </small>
                 </S.InputGroup>
                 <S.Row columnGap="30px">
                   <S.InputGroup>
@@ -158,10 +168,10 @@ const Checkout = () => {
                       value={form.values.cardNumber}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError('cardNumber') ? 'error' : ''
+                      }
                     />
-                    <small>
-                      {getErrorMessage('cardNumber', form.errors.cardNumber)}
-                    </small>
                   </S.InputGroup>
                   <S.InputGroup maxWidth="87px">
                     <label htmlFor="cardCode">CVV</label>
@@ -172,10 +182,8 @@ const Checkout = () => {
                       value={form.values.cardCode}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={checkInputHasError('cardCode') ? 'error' : ''}
                     />
-                    <small>
-                      {getErrorMessage('cardCode', form.errors.cardCode)}
-                    </small>
                   </S.InputGroup>
                 </S.Row>
                 <S.Row>
@@ -188,10 +196,10 @@ const Checkout = () => {
                       value={form.values.expiresYear}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError('expiresYear') ? 'error' : ''
+                      }
                     />
-                    <small>
-                      {getErrorMessage('expiresYear', form.errors.expiresYear)}
-                    </small>
                   </S.InputGroup>
                   <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresMonth">Ano de vencimento</label>
@@ -202,13 +210,10 @@ const Checkout = () => {
                       value={form.values.expiresMonth}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError('expiresMonth') ? 'error' : ''
+                      }
                     />
-                    <small>
-                      {getErrorMessage(
-                        'expiresMonth',
-                        form.errors.expiresMonth
-                      )}
-                    </small>
                   </S.InputGroup>
                 </S.Row>
                 <S.ButtonCard
@@ -237,10 +242,8 @@ const Checkout = () => {
                     value={form.values.fullName}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('fullName') ? 'error' : ''}
                   />
-                  <small>
-                    {getErrorMessage('fullName', form.errors.fullName)}
-                  </small>
                 </S.InputGroup>
                 <S.InputGroup>
                   <label htmlFor="address">Endereço</label>
@@ -251,10 +254,8 @@ const Checkout = () => {
                     value={form.values.address}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('address') ? 'error' : ''}
                   />
-                  <small>
-                    {getErrorMessage('address', form.errors.address)}
-                  </small>
                 </S.InputGroup>
                 <S.InputGroup>
                   <label htmlFor="city">Cidade</label>
@@ -265,8 +266,8 @@ const Checkout = () => {
                     value={form.values.city}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={checkInputHasError('city') ? 'error' : ''}
                   />
-                  <small>{getErrorMessage('city', form.errors.city)}</small>
                 </S.InputGroup>
                 <S.Row>
                   <S.InputCepNumber maxWidth="155px">
@@ -278,8 +279,8 @@ const Checkout = () => {
                       value={form.values.cep}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={checkInputHasError('cep') ? 'error' : ''}
                     />
-                    <small>{getErrorMessage('cep', form.errors.cep)}</small>
                   </S.InputCepNumber>
                   <S.InputCepNumber maxWidth="155px">
                     <label htmlFor="numberHome">Número</label>
@@ -290,10 +291,10 @@ const Checkout = () => {
                       value={form.values.numberHome}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        checkInputHasError('numberHome') ? 'error' : ''
+                      }
                     />
-                    <small>
-                      {getErrorMessage('numberHome', form.errors.numberHome)}
-                    </small>
                   </S.InputCepNumber>
                 </S.Row>
                 <S.InputGroup>
@@ -305,13 +306,10 @@ const Checkout = () => {
                     value={form.values.complementHome}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      checkInputHasError('complementHome') ? 'error' : ''
+                    }
                   />
-                  <small>
-                    {getErrorMessage(
-                      'complementHome',
-                      form.errors.complementHome
-                    )}
-                  </small>
                 </S.InputGroup>
 
                 <S.ButtonCard
