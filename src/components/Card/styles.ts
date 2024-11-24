@@ -5,11 +5,12 @@ export const CardContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
-  padding: 32px 8px 0 8px;
-  max-width: 360px;
   width: 100%;
   height: 100%;
+  max-width: 360px;
+  padding: 32px 8px 0 8px;
   background-color: ${colors.orange};
+  z-index: 2;
 
   h2 {
     color: ${colors.lightOrange};

@@ -1,22 +1,33 @@
-import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import InputMask from 'react-input-mask'
 
 import Card from '../../components/Card'
 
 import { usePurchaseMutation } from '../../services/api'
 import { RootReducer } from '../../store'
 
-import { Overlay } from '../../components/Cart/styles'
 import * as S from './styles'
 import { getTotalPrice, parseToBrl } from '../../utils'
+import { open, clear } from '../../store/reducers/cart'
 
-const Checkout = () => {
+const Checkout = ({ onClose }: { onClose: () => void }) => {
   const [payWithCard, setPayWithCard] = useState(false)
-  const [purchase, { data, isSuccess }] = usePurchaseMutation()
+  const [isOpenCart, setIsOpenCart] = useState(false)
+  const [purchase, { data, isSuccess, isLoading }] = usePurchaseMutation()
   const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const checkoutForm = () => {
+    setIsOpenCart(true)
+    onClose()
+    navigate('/')
+  }
 
   const form = useFormik({
     initialValues: {
@@ -46,7 +57,7 @@ const Checkout = () => {
       cardDisplayName: Yup.string().when((values, schema) =>
         payWithCard ? schema.required('O campo é obrigatório') : schema
       ),
-      cardNumber: Yup.number().when((values, schema) =>
+      cardNumber: Yup.string().when((values, schema) =>
         payWithCard ? schema.required('O campo é obrigatório') : schema
       ),
       cardCode: Yup.string().when((values, schema) =>
@@ -81,15 +92,17 @@ const Checkout = () => {
             }
           }
         },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco as number
+        }))
       })
     }
   })
+
+  const openCart = () => {
+    dispatch(open())
+  }
 
   const checkInputHasError = (fieldName: string) => {
     const isTouched = fieldName in form.touched
@@ -99,14 +112,51 @@ const Checkout = () => {
     return hasError
   }
 
-  if (items.length === 0) {
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clear())
+    }
+  }, [isSuccess, dispatch])
+
+  if (items.length === 0 && !isSuccess) {
     return <Navigate to="/" />
+  }
+
+  const deliveryDetails = () => {
+    form.setTouched({
+      fullName: true,
+      address: true,
+      city: true,
+      cep: true,
+      numberHome: true
+    })
+
+    const isDeliveryValid =
+      !form.errors.fullName &&
+      !form.errors.address &&
+      !form.errors.city &&
+      !form.errors.cep &&
+      !form.errors.numberHome &&
+      form.values.fullName !== '' &&
+      form.values.address !== '' &&
+      form.values.city !== '' &&
+      form.values.cep !== '' &&
+      form.values.numberHome !== ''
+
+    if (isDeliveryValid) {
+      setPayWithCard(true)
+    }
+  }
+
+  const comeBackFormDelivery = () => {
+    setIsOpenCart(true)
+    onClose()
+    openCart()
   }
 
   return (
     <div className="container">
-      <Overlay />
-      {isSuccess ? (
+      {!isOpenCart && isSuccess && data ? (
         <Card title={`Pedido realizado - ${data.orderId}`}>
           <>
             <p>
@@ -127,6 +177,7 @@ const Checkout = () => {
               gastronômica. Bom apetite!
             </p>
             <S.ButtonCard
+              onClick={checkoutForm}
               type="submit"
               className="margin-top"
               title="clique aqui para confirmar seu pedido"
@@ -161,8 +212,8 @@ const Checkout = () => {
                 <S.Row columnGap="30px">
                   <S.InputGroup>
                     <label htmlFor="cardNumber">Número do cartão</label>
-                    <input
-                      type="number"
+                    <InputMask
+                      type="text"
                       id="cardNumber"
                       name="cardNumber"
                       value={form.values.cardNumber}
@@ -171,25 +222,27 @@ const Checkout = () => {
                       className={
                         checkInputHasError('cardNumber') ? 'error' : ''
                       }
+                      mask="9999 9999 9999 9999"
                     />
                   </S.InputGroup>
                   <S.InputGroup maxWidth="87px">
                     <label htmlFor="cardCode">CVV</label>
-                    <input
-                      type="number"
+                    <InputMask
+                      type="text"
                       id="cardCode"
                       name="cardCode"
                       value={form.values.cardCode}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                       className={checkInputHasError('cardCode') ? 'error' : ''}
+                      mask="999"
                     />
                   </S.InputGroup>
                 </S.Row>
                 <S.Row>
                   <S.InputGroup maxWidth="155px">
-                    <label htmlFor="expiresYear">Mês de vencimento</label>
-                    <input
+                    <label htmlFor="expiresYear">Ano de vencimento</label>
+                    <InputMask
                       type="text"
                       id="expiresYear"
                       name="expiresYear"
@@ -199,11 +252,12 @@ const Checkout = () => {
                       className={
                         checkInputHasError('expiresYear') ? 'error' : ''
                       }
+                      mask="99"
                     />
                   </S.InputGroup>
                   <S.InputGroup maxWidth="155px">
-                    <label htmlFor="expiresMonth">Ano de vencimento</label>
-                    <input
+                    <label htmlFor="expiresMonth">Mês de vencimento</label>
+                    <InputMask
                       type="text"
                       id="expiresMonth"
                       name="expiresMonth"
@@ -213,6 +267,7 @@ const Checkout = () => {
                       className={
                         checkInputHasError('expiresMonth') ? 'error' : ''
                       }
+                      mask="99"
                     />
                   </S.InputGroup>
                 </S.Row>
@@ -220,7 +275,9 @@ const Checkout = () => {
                   title="Clique aqui para finalizar o pagamento"
                   className="margin-top"
                 >
-                  Finalizar pagamento
+                  {isLoading
+                    ? 'Finalizando a compra...'
+                    : 'Finalizar pagamento'}
                 </S.ButtonCard>
                 <S.ButtonCard
                   onClick={() => setPayWithCard(false)}
@@ -272,7 +329,7 @@ const Checkout = () => {
                 <S.Row>
                   <S.InputCepNumber maxWidth="155px">
                     <label htmlFor="cep">CEP</label>
-                    <input
+                    <InputMask
                       id="cep"
                       type="text"
                       name="cep"
@@ -280,6 +337,7 @@ const Checkout = () => {
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
                       className={checkInputHasError('cep') ? 'error' : ''}
+                      mask="99999-999"
                     />
                   </S.InputCepNumber>
                   <S.InputCepNumber maxWidth="155px">
@@ -313,13 +371,16 @@ const Checkout = () => {
                 </S.InputGroup>
 
                 <S.ButtonCard
-                  onClick={() => setPayWithCard(true)}
+                  onClick={deliveryDetails}
                   className="margin-top"
                   title="Clique aqui para continuar para o pagamento"
                 >
                   Continuar com o pagamento
                 </S.ButtonCard>
-                <S.ButtonCard title="Clique voltar para o carrinho">
+                <S.ButtonCard
+                  onClick={comeBackFormDelivery}
+                  title="Clique voltar para o carrinho"
+                >
                   Voltar para o carrinho
                 </S.ButtonCard>
               </>

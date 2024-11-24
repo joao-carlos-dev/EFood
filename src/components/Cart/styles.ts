@@ -9,8 +9,8 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
-  opacity: 0.8;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
 `
 
 export const CartContainer = styled.div`
@@ -33,11 +33,20 @@ export const Sidebar = styled.aside`
   z-index: 1;
   padding: 32px 8px 0 8px;
   max-width: 360px;
+  max-height: 1624px;
+  height: 100%;
   width: 100%;
 
   ${ButtonModel} {
     max-width: 100%;
     width: 100%;
+  }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.lightOrange};
+    text-align: center;
   }
 `
 export const PricesTotal = styled.p`

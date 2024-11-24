@@ -4,28 +4,28 @@ import Header from '../../components/Header'
 
 import ProdutoList from '../../components/ProdutosList'
 
-import { Rest } from '../Home'
 import { useGetBannerQuery, useGetProdutQuery } from '../../services/api'
 
 export type Props = {
   rests: Rest[]
 }
 
-const Perfil = () => {
-  const { id } = useParams()
-  const { data: produto } = useGetProdutQuery(id!)
-  const { data: banner } = useGetBannerQuery(id!)
+type RestParams = {
+  id: string
+}
 
-  if (produto && banner) {
-    return (
-      <>
-        <Header />
-        <Apresentacao rests={banner} />
-        <ProdutoList rests={produto} />
-      </>
-    )
-  }
-  return <h4>Carregando</h4>
+const Perfil = () => {
+  const { id } = useParams() as RestParams
+  const { data: produto, isLoading: isLoadingProduto } = useGetProdutQuery(id)
+  const { data: banner, isLoading: isLoadingBanner } = useGetBannerQuery(id)
+
+  return (
+    <>
+      <Header />
+      <Apresentacao rests={banner} isLoading={isLoadingBanner} />
+      <ProdutoList rests={produto} isLoading={isLoadingProduto} />
+    </>
+  )
 }
 
 export default Perfil

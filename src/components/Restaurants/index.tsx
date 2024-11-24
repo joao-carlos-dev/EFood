@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import { Link } from 'react-router-dom'
 
 import { getDescription } from '../../utils'
@@ -16,6 +17,7 @@ export type Props = {
   image: string
   avaliacao: string
   tipo?: string
+  destacado?: string
 }
 
 const Restaurants = ({

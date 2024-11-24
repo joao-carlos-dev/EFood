@@ -1,14 +1,15 @@
-import { Rest } from '../../pages/Home'
+import Loader from '../Loader'
 
 import Restaurants from '../Restaurants'
 
 import * as S from './styles'
 
 export type Props = {
-  rests: Rest[]
+  rests?: Rest[]
+  isLoading: boolean
 }
 
-const RestaurantsList = ({ rests }: Props) => {
+const RestaurantsList = ({ rests, isLoading }: Props) => {
   const getGameTags = (rest: Rest) => {
     const tags = []
 
@@ -19,21 +20,26 @@ const RestaurantsList = ({ rests }: Props) => {
     return tags
   }
 
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <S.Container>
       <div className="container">
         <S.List>
-          {rests.map((rests) => (
-            <Restaurants
-              key={rests.id}
-              id={rests.id}
-              titulo={rests.titulo}
-              descricao={rests.descricao}
-              image={rests.capa}
-              avaliacao={rests.avaliacao}
-              infos={getGameTags(rests)}
-            />
-          ))}
+          {rests &&
+            rests.map((rests) => (
+              <Restaurants
+                key={rests.id}
+                id={rests.id}
+                titulo={rests.titulo}
+                descricao={rests.descricao}
+                image={rests.capa}
+                avaliacao={rests.avaliacao}
+                infos={getGameTags(rests)}
+              />
+            ))}
         </S.List>
       </div>
     </S.Container>

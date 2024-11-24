@@ -1,15 +1,19 @@
 /* eslint-disable react/jsx-key */
-import { Rest } from '../../pages/Home'
 
 import * as S from './styles'
 
 import Produtos from '../Produtos'
+import Loader from '../Loader'
 
 export type Props = {
   rests: Rest | undefined
+  isLoading: boolean
 }
 
-const ProdutoList = ({ rests }: Props) => {
+const ProdutoList = ({ rests, isLoading }: Props) => {
+  if (isLoading) {
+    return <Loader />
+  }
   return (
     <S.Container>
       <div className="container">

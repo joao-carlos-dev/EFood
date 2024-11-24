@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import { Produto } from '../../pages/Home'
 import { getDescription, parseToBrl } from '../../utils'
 
-import close from '../../assets/images/close.png'
+import iconClose from '../../assets/images/close.png'
 
 import { ButtonContainer } from '../Button/styles'
 import * as S from './styles'
@@ -24,6 +23,7 @@ const Produtos = ({ pedido }: Props) => {
     dispatch(add(pedido))
     dispatch(open())
   }
+
   return (
     <>
       <S.Card>
@@ -49,12 +49,13 @@ const Produtos = ({ pedido }: Props) => {
           </S.InfosDish>
           <div>
             <img
-              src={close}
+              src={iconClose}
               alt="Ícone de fechar"
               onClick={() => setIsVisible(false)}
             />
           </div>
         </S.ModalContent>
+
         <div className="overlay"></div>
       </S.Modal>
     </>

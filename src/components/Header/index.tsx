@@ -24,12 +24,14 @@ const Header = () => {
         <nav>
           <S.Links>
             <li>
-              <a href="#">Restaurantes</a>
+              <a href="/">Restaurantes</a>
             </li>
           </S.Links>
         </nav>
         <Link to="/">
-          <img src={soon} alt="EFOOD" />
+          <h1>
+            <img src={soon} alt="EFOOD" />
+          </h1>
         </Link>
         <S.CartButton onClick={openCart}>
           {items.length} - produto(s)
