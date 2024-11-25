@@ -11,6 +11,7 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
+  overflow: hidden;
 `
 
 export const CartContainer = styled.div`

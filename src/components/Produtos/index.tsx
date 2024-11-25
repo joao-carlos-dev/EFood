@@ -22,6 +22,7 @@ const Produtos = ({ pedido }: Props) => {
   const addToCart = () => {
     dispatch(add(pedido))
     dispatch(open())
+    setIsVisible(false)
   }
 
   return (

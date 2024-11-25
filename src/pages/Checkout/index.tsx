@@ -13,6 +13,7 @@ import { RootReducer } from '../../store'
 import * as S from './styles'
 import { getTotalPrice, parseToBrl } from '../../utils'
 import { open, clear } from '../../store/reducers/cart'
+import { Overlay } from '../../components/Cart/styles'
 
 const Checkout = ({ onClose }: { onClose: () => void }) => {
   const [payWithCard, setPayWithCard] = useState(false)
@@ -155,7 +156,8 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
   }
 
   return (
-    <div className="container">
+    <S.EncapsuladorCard>
+      <Overlay />
       {!isOpenCart && isSuccess && data ? (
         <Card title={`Pedido realizado - ${data.orderId}`}>
           <>
@@ -388,7 +390,7 @@ const Checkout = ({ onClose }: { onClose: () => void }) => {
           )}
         </form>
       )}
-    </div>
+    </S.EncapsuladorCard>
   )
 }
 

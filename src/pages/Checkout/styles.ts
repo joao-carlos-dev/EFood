@@ -9,6 +9,16 @@ type RowProps = {
   columnGap?: string
 }
 
+export const EncapsuladorCard = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-end;
+  z-index: 1;
+`
+
 export const Row = styled.div<RowProps>`
   column-gap: ${(props) => props.columnGap || '34px'};
   display: flex;
