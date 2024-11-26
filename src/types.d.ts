@@ -1,7 +1,7 @@
 declare type Rest = {
   id: number
   titulo: string
-  destacdo?: string
+  destacdo?: boolean
   tipo: string
   avaliacao: string
   descricao: string

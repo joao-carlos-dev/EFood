@@ -1,6 +1,6 @@
 import { TagContainer } from './styles'
 
-type Props = {
+export type Props = {
   children: string
 }
 

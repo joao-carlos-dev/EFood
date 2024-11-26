@@ -17,6 +17,10 @@ const RestaurantsList = ({ rests, isLoading }: Props) => {
       tags.push(rest.tipo)
     }
 
+    if (rest.destacdo) {
+      tags.push('Destaque da semana')
+    }
+
     return tags
   }
 
