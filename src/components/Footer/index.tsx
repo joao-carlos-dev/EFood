@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 
-import * as S from './styles'
-
 import soon from '../../assets/images/logo.png'
 import insta from '../../assets/images/insta-logo.png'
 import face from '../../assets/images/face-logo .png'
 import twitter from '../../assets/images/twitter-logo.png'
+
+import * as S from './styles'
 
 const Footer = () => (
   <S.Container>

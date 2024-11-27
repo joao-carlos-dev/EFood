@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { getDescription, parseToBrl } from '../../utils'
+import { add, open } from '../../store/reducers/cart'
 
 import iconClose from '../../assets/images/close.png'
 
 import { ButtonContainer } from '../Button/styles'
 import * as S from './styles'
-import { add, open } from '../../store/reducers/cart'
 
 export type Props = {
   pedido: Produto

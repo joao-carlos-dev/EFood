@@ -10,14 +10,14 @@ export type Props = {
 }
 
 const RestaurantsList = ({ rests, isLoading }: Props) => {
-  const getGameTags = (rest: Rest) => {
+  const getGameTags = (rests: Rest) => {
     const tags = []
 
-    if (rest.tipo) {
-      tags.push(rest.tipo)
+    if (rests.tipo) {
+      tags.push(rests.tipo)
     }
 
-    if (rest.destacdo) {
+    if (rests.destacado) {
       tags.push('Destaque da semana')
     }
 

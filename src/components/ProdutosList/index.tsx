@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
 
-import * as S from './styles'
-
 import Produtos from '../Produtos'
 import Loader from '../Loader'
+
+import * as S from './styles'
 
 export type Props = {
   rests: Rest | undefined

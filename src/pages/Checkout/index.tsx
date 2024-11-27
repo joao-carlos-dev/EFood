@@ -5,15 +5,15 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import InputMask from 'react-input-mask'
 
-import Card from '../../components/Card'
-
 import { usePurchaseMutation } from '../../services/api'
 import { RootReducer } from '../../store'
-
-import * as S from './styles'
 import { getTotalPrice, parseToBrl } from '../../utils'
 import { open, clear } from '../../store/reducers/cart'
+
+import Card from '../../components/Card'
+
 import { Overlay } from '../../components/Cart/styles'
+import * as S from './styles'
 
 const Checkout = ({ onClose }: { onClose: () => void }) => {
   const [payWithCard, setPayWithCard] = useState(false)

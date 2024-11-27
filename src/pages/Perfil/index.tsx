@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom'
+
+import { useGetBannerQuery, useGetProdutQuery } from '../../services/api'
+
 import Apresentacao from '../../components/Apresentacao'
 import Header from '../../components/Header'
 
 import ProdutoList from '../../components/ProdutosList'
-
-import { useGetBannerQuery, useGetProdutQuery } from '../../services/api'
 
 export type Props = {
   rests: Rest[]
