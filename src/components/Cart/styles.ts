@@ -1,7 +1,8 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { ButtonModel } from '../Produtos/styles'
 import lixeira from '../../assets/images/lixeira-de-reciclagem 1.png'
+import iconClose from '../../assets/images/close.png'
 
 export const Overlay = styled.div`
   position: absolute;

@@ -92,6 +92,10 @@ export const ModalContent = styled.div`
     img {
       margin: 8px;
       cursor: pointer;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        margin: 2px;
+      }
     }
   }
 
@@ -126,7 +130,7 @@ export const InfosDish = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin-left: 2px;
+    margin-left: 0px;
   }
 `
 

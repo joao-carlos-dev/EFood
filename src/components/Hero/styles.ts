@@ -24,7 +24,7 @@ export const Title = styled.h1`
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 24px;
-    line-height: 32px;
-    width: 428px;
+    line-height: 24px;
+    width: 328px;
   }
 `
