@@ -27,4 +27,10 @@ export const Title = styled.h1`
     line-height: 24px;
     width: 328px;
   }
+
+  @media (max-width: ${breakpoints.phone}) {
+    font-size: 22px;
+    line-height: 22px;
+    width: 308px;
+  }
 `

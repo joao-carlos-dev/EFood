@@ -15,6 +15,12 @@ export const HeaderBar = styled.header`
     text-decoration: none;
     font-weight: 900;
   }
+
+  @media (max-width: ${breakpoints.phone}) {
+    h1 img {
+      width: 80px;
+    }
+  }
 `
 
 export const Links = styled.ul`
@@ -22,6 +28,10 @@ export const Links = styled.ul`
 
   @media (max-width: ${breakpoints.tablet}) {
     margin-left: 15px;
+  }
+
+  @media (max-width: ${breakpoints.phone}) {
+    margin-left: 10px;
   }
 `
 
@@ -31,6 +41,10 @@ export const CartButton = styled.a`
 
   @media (max-width: ${breakpoints.tablet}) {
     margin-right: 15px;
+  }
+
+  @media (max-width: ${breakpoints.phone}) {
+    margin-right: 10px;
   }
 
   img {

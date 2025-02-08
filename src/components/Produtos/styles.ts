@@ -94,7 +94,7 @@ export const ModalContent = styled.div`
       cursor: pointer;
 
       @media (max-width: ${breakpoints.tablet}) {
-        margin: 2px;
+        margin: 0px;
       }
     }
   }
@@ -130,7 +130,7 @@ export const InfosDish = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin-left: 0px;
+    margin-left: 2px;
   }
 `
 
