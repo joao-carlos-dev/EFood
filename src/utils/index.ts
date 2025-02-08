@@ -6,8 +6,8 @@ export const parseToBrl = (amount: number) => {
 }
 
 export const getDescription = (text: string) => {
-  if (text.length > 250) {
-    return text.slice(0, 250) + '...'
+  if (text.length > 200) {
+    return text.slice(0, 200) + '...'
   }
   return text
 }

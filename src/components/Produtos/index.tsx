@@ -41,8 +41,6 @@ const Produtos = ({ pedido }: Props) => {
           <S.InfosDish>
             <S.NameDish>{pedido.nome}</S.NameDish>
             <S.Dish>{pedido.descricao}</S.Dish>
-            <br></br>
-            <br></br>
             <S.Dish>{pedido.porcao}</S.Dish>
             <S.ButtonModel onClick={addToCart}>
               Adicionar ao carrinho - {parseToBrl(pedido.preco)}

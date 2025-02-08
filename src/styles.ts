@@ -7,6 +7,11 @@ export const colors = {
   bottomColor: '#FFF8F2'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 export const EstiloGlobal = createGlobalStyle`
   * {
     margin: 0;
@@ -26,5 +31,9 @@ export const EstiloGlobal = createGlobalStyle`
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      max-width: 80%;
+    }
   }
 `

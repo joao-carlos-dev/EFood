@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { ButtonContainer } from '../Button/styles'
 
 export const Card = styled.div`
@@ -79,6 +79,15 @@ export const ModalContent = styled.div`
   z-index: 1;
   background-color: ${colors.orange};
 
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+    max-height: 268px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 90%;
+  }
+
   div {
     img {
       margin: 8px;
@@ -94,12 +103,31 @@ export const ModalContent = styled.div`
     width: 280px;
     height: 280px;
     margin: 32px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      width: 180px;
+      height: 180px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      width: 80px;
+      height: 80px;
+      margin-top: 55px;
+    }
   }
 `
 
 export const InfosDish = styled.div`
   display: block;
   margin-left: 24px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin-left: 8px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-left: 2px;
+  }
 `
 
 export const NameDish = styled.h4`
@@ -109,6 +137,15 @@ export const NameDish = styled.h4`
   align: center;
   margin-top: 32px;
   margin-bottom: 16px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 14px;
+    margin-top: 18px;
+  }
 `
 
 export const Dish = styled.p`
@@ -116,6 +153,18 @@ export const Dish = styled.p`
   font-size: 14px;
   line-height: 22px;
   margin-bottom: 16px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 10px;
+    line-height: 12px;
+    margin-bottom: 6px;
+  }
 `
 
 export const ButtonModel = styled.button`
@@ -128,4 +177,19 @@ export const ButtonModel = styled.button`
   height: 24px;
   border: none;
   cursor: pointer;
+  margin-top: 88px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 188px;
+    height: 22px;
+    font-size: 12px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 168px;
+    height: 18px;
+    font-size: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
 `
