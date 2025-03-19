@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# EFood
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introdução
 
-## Available Scripts
+Este projeto é uma aplicação web React criada usando `create-react-app`. Ele fornece uma estrutura básica para uma aplicação web, com configurações padrão para desenvolvimento e produção.
 
-In the project directory, you can run:
+## Tecnologias Utilizadas
 
-### `npm start`
+* **React:** Biblioteca JavaScript para construção de interfaces de usuário.
+* **HTML5:** Linguagem de marcação para a estrutura da página web.
+* **JavaScript:** Linguagem de programação para a lógica da aplicação.
+* **create-react-app:** Ferramenta para iniciar projetos React com configuração mínima.
+* **Google Fonts:** Para a utilização da fonte Roboto.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Funcionalidades
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Configuração básica de um projeto React com `create-react-app`.
+* Integração de fontes personalizadas do Google Fonts.
+* Estrutura inicial para desenvolvimento e produção.
 
-### `npm test`
+## Contribuição
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Contribuições são bem-vindas! Se você deseja contribuir para este projeto, siga estas etapas:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1.  Faça um fork do repositório.
+2.  Crie uma branch com a sua funcionalidade ou correção de bug: `git checkout -b minha-funcionalidade`.
+3.  Faça as alterações e commit: `git commit -am 'Adiciona minha funcionalidade'`.
+4.  Envie as alterações para o seu fork: `git push origin minha-funcionalidade`.
+5.  Crie um pull request no GitHub.
